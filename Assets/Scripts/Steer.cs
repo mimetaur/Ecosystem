@@ -8,134 +8,81 @@ public class Steer : MonoBehaviour
 
     public Vector2 target;
 
-    //The AI's speed per second
-    public float speed = 2;
-
-    //The max distance from the AI to a waypoint for it to continue to the next waypoint
-    public float nextWaypointDistance = 3;
-
-    //The calculated path
-    public Path path;
-
-    //The waypoint we are currently moving towards
-    private int currentWaypoint = 0;
-
-    private Seeker seeker;
-
-    private FindFood foodFinder;
+    public float maxSeeAhead = 10.0f;
 
     private Rigidbody2D rb2d;
 
     private float maxSpeed;
+    private float maxAvoidForce;
+
 
     private void Start()
     {
-        seeker = GetComponent<Seeker>();
         rb2d = GetComponent<Rigidbody2D>();
 
 
         // set up a target
-        maxSpeed = Random.Range(1.5f, 4.0f);
+        maxSpeed = Random.Range(2.5f, 5.0f);
         float posY = transform.position.y;
         float destY = Random.Range(posY - 4, posY + 4);
         target = new Vector2(-20, destY);
-
-        // find target
-        FindTarget();
-
-
-        //float lowerLimit = -0.25f;
-        //float upperLimit = -0.75f;
-        //float xAccel = Random.Range(lowerLimit, upperLimit);
-        //acceleration = new Vector2(xAccel, 0.0f);
-        //rotationAcceleration = GameUtils.Map(xAccel, lowerLimit, upperLimit, 0.05f, 0.15f);
+        maxAvoidForce = 4.0f;
     }
 
-    private void FindTarget() {
-        seeker.StartPath(transform.position, target, OnPathComplete);
-    }
 
-    public void OnPathComplete(Path p)
+
+    private Vector2 Seek(Vector2 targetPosition)
     {
-        Debug.Log("Yay, we got a path back. Did it have an error? " + p.error);
-        if (!p.error)
-        {
-            path = p;
-            //Reset the waypoint counter
-            currentWaypoint = 0;
-        }
-    }
+        var position = transform.position.AsVector2();
 
-    private Vector2 Seek(Vector2 currentTarget)
-    {
-        Vector2 position = transform.position.AsVector2();
-        Vector2 desired = target - position;
+
+        Vector2 desired = targetPosition - position;
         desired.Normalize();
         desired *= maxSpeed;
 
         Vector2 steer = desired - rb2d.velocity;
         steer.Normalize();
-        //print("Unsnapped" + steer);
-        //steer = GameUtils.SnapTo(steer, 45);
-        //print("Snapped" + steer);
 
         steer *= maxSpeed;
         return steer;
     }
 
+    private Vector2 Avoid()
+    {
+        Vector2 position = transform.position.AsVector2();
+
+        //RaycastHit2D
+        RaycastHit2D hit = Physics2D.Raycast(position, rb2d.velocity.normalized, maxSeeAhead);
+
+        // avoidance_force = ahead - obstacle_center
+
+        Vector2 ahead = position + rb2d.velocity;
+
+        // by default, no avoidance
+        Vector2 force = new Vector2(0, 0);
+        if (hit.collider != null)
+        {
+            print("About to collide" + hit.fraction);
+            Vector2 obstacle = hit.collider.transform.position;
+            force = ((ahead - obstacle).normalized) * maxAvoidForce;
+        }
+
+        return force;
+    }
+
     private void FixedUpdate()
     {
-        CheckPathExists();
-        CheckEndOfPath();
-        Move();
-        CheckWaypoint();
-    }
+        var seek = Seek(target);
+        rb2d.AddForce(seek);
 
-    private void CheckPathExists() {
-        if (path == null)
-        {
-            //We have no path to move after yet
-            FindTarget();
-            return;
-        }
-    }
+        //var avoid = Avoid();
 
-    private void CheckEndOfPath() {
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            Debug.Log("End Of Path Reached");
+        //rb2d.AddForce(avoid);
 
-            // set current position to target
-            target = transform.position;
-            FindTarget();
-            return;
-        }
-    }
-
-    private void Move() {
-
-        //Direction to the next waypoint
-        Vector2 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-
-        //dir *= speed * Time.fixedDeltaTime;
-        //this.gameObject.transform.Translate(dir);
-
-        var steer = Seek(dir);
-        rb2d.AddForce(steer);
         rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxSpeed);
 
-        rb2d.angularVelocity = 125.0f;
-    }
-
-    private void CheckWaypoint() {
-        //Check if we are close enough to the next waypoint
-        //If we are, proceed to follow the next waypoint
-        if (Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
-        {
-            currentWaypoint++;
-            return;
-        }
-
+        rb2d.angularVelocity = maxSpeed.Map(2.5f, 5.0f, 100.0f, 150.0f);
+        //transform.Rotate( new Vector3(0, 0 1.0f) );
     }
 }
 
