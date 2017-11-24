@@ -1,7 +1,8 @@
 namespace Pathfinding {
 	using Pathfinding.Util;
+	using UnityEngine;
 
-	public class NavmeshTile : INavmeshHolder, INavmesh {
+	public class NavmeshTile : INavmeshHolder {
 		/** Tile triangles */
 		public int[] tris;
 
@@ -18,13 +19,13 @@ namespace Pathfinding {
 		public int z;
 
 		/** Width, in tile coordinates.
-		     * \warning Widths other than 1 are not supported. This is mainly here for possible future features.
-		     */
+		 * \warning Widths other than 1 are not supported. This is mainly here for possible future features.
+		 */
 		public int w;
 
 		/** Depth, in tile coordinates.
-		     * \warning Depths other than 1 are not supported. This is mainly here for possible future features.
-		     */
+		 * \warning Depths other than 1 are not supported. This is mainly here for possible future features.
+		 */
 		public int d;
 
 		/** All nodes in the tile */
@@ -35,6 +36,8 @@ namespace Pathfinding {
 
 		/** Temporary flag used for batching */
 		public bool flag;
+
+		public NavmeshBase graph;
 
 		#region INavmeshHolder implementation
 
@@ -57,6 +60,9 @@ namespace Pathfinding {
 		public Int3 GetVertexInGraphSpace (int index) {
 			return vertsInGraphSpace[index & NavmeshBase.VertexIndexMask];
 		}
+
+		/** Transforms coordinates from graph space to world space */
+		public GraphTransform transform { get { return graph.transform; } }
 
 		#endregion
 
@@ -96,6 +102,7 @@ namespace Pathfinding {
 			}
 
 			nodes = null;
+			graph = null;
 			ObjectPool<BBTree>.Release(ref bbTree);
 		}
 	}

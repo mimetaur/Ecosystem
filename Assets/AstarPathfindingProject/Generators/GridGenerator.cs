@@ -77,17 +77,20 @@ namespace Pathfinding {
 	 * but it will pick them up once the game starts. If it still does not pick them up
 	 * make sure that the trees actually have colliders attached to them and that the tree prefabs are
 	 * in the correct layer (the layer should be included in the 'Collision Testing' mask).
+	 *
+	 * \see #Pathfinding.GraphCollision for documentation on the 'Height Testing' and 'Collision Testing' sections
+	 * of the grid graph settings.
 	 */
 	public class GridGraph : NavGraph, IUpdatableGraph, ITransformedGraph {
 		/** This function will be called when this graph is destroyed */
-		public override void OnDestroy () {
+		protected override void OnDestroy () {
 			base.OnDestroy();
 
 			// Clean up a reference in a static variable which otherwise should point to this graph forever and stop the GC from collecting it
 			RemoveGridGraphFromStatic();
 		}
 
-		internal override void DestroyAllNodesInternal () {
+		protected override void DestroyAllNodes () {
 			GetNodes(node => {
 				// If the grid data happens to be invalid (e.g we had to abort a graph update while it was running) using 'false' as
 				// the parameter will prevent the Destroy method from potentially throwing IndexOutOfRange exceptions due to trying
@@ -133,6 +136,12 @@ namespace Pathfinding {
 
 		/** \name Inspector - Settings
 		 * \{ */
+
+		/** Determines the layout of the grid graph inspector in the Unity Editor.
+		 * This field is only used in the editor, it has no effect on the rest of the game whatsoever.
+		 */
+		[JsonMember]
+		public InspectorGridMode inspectorGridMode = InspectorGridMode.Grid;
 
 		/** Width of the grid in nodes. \see SetDimensions */
 		public int width;
@@ -189,7 +198,7 @@ namespace Pathfinding {
 		public Vector2 unclampedSize;
 
 		/** Size of one node in world units.
-		 * \see UpdateSizeFromWidthDepth
+		 * \see #SetDimensions
 		 */
 		[JsonMember]
 		public float nodeSize = 1;
@@ -247,21 +256,6 @@ namespace Pathfinding {
 		[JsonMember]
 		public int erosionFirstTag = 1;
 
-		/**
-		 * Auto link the graph's edge nodes together with other GridGraphs in the scene on Scan.
-		 * \warning This feature is experimental and it is currently disabled.
-		 *
-		 * \see #autoLinkDistLimit */
-		[JsonMember]
-		public bool autoLinkGrids;
-
-		/**
-		 * Distance limit for grid graphs to be auto linked.
-		 * \warning This feature is experimental and it is currently disabled.
-		 *
-		 * \see #autoLinkGrids */
-		[JsonMember]
-		public float autoLinkDistLimit = 10F;
 
 		/** Number of neighbours for each node.
 		 * Either four, six, eight connections per node.
@@ -375,12 +369,14 @@ namespace Pathfinding {
 		 * The first node has grid coordinates X=0, Z=0, the second one X=1, Z=0\n
 		 * the last one has grid coordinates X=width-1, Z=depth-1.
 		 *
-		 * \see GetNodes
+		 * \snippet MiscSnippets.cs GridGraph.nodes1
+		 *
+		 * \see #GetNodes
 		 */
 		public GridNode[] nodes;
 
 		/** Determines how the graph transforms graph space to world space.
-		 * \see UpdateTransform
+		 * \see #UpdateTransform
 		  */
 		public GraphTransform transform { get; private set; }
 
@@ -537,6 +533,8 @@ namespace Pathfinding {
 		 * You should use this method instead of setting the #width and #depth fields
 		 * as the grid dimensions are not defined by the #width and #depth variables but by
 		 * the #unclampedSize and #center variables.
+		 *
+		 * \snippet MiscSnippets.cs GridGraph.SetDimensions
 		 */
 		public void SetDimensions (int width, int depth, float nodeSize) {
 			unclampedSize = new Vector2(width, depth)*nodeSize;
@@ -544,14 +542,14 @@ namespace Pathfinding {
 			UpdateTransform();
 		}
 
-		/** Updates #unclampedSize from #width, #depth and #nodeSize values. \deprecated Use SetDimensions instead */
+		/** Updates #unclampedSize from #width, #depth and #nodeSize values. \deprecated Use #SetDimensions instead */
 		[System.Obsolete("Use SetDimensions instead")]
 		public void UpdateSizeFromWidthDepth () {
 			SetDimensions(width, depth, nodeSize);
 		}
 
-		/** Generates the matrix used for translating nodes from grid coordinates to world coordintes.
-		 * \deprecated This method has been renamed to UpdateTransform
+		/** Generates the matrix used for translating nodes from grid coordinates to world coordinates.
+		 * \deprecated This method has been renamed to #UpdateTransform
 		  */
 		[System.Obsolete("This method has been renamed to UpdateTransform")]
 		public void GenerateMatrix () {
@@ -575,7 +573,7 @@ namespace Pathfinding {
 
 		/** Returns a new transform which transforms graph space to world space.
 		 * Does not update the #transform field.
-		 * \see UpdateTransform
+		 * \see #UpdateTransform
 		 */
 		public GraphTransform CalculateTransform () {
 			int newWidth, newDepth;
@@ -874,9 +872,7 @@ namespace Pathfinding {
 			neighbourZOffsets[7] = -1;
 		}
 
-		public override IEnumerable<Progress> ScanInternal () {
-			AstarPath.OnPostScan += new OnScanDelegate(OnPostScan);
-
+		protected override IEnumerable<Progress> ScanInternal () {
 			if (nodeSize <= 0) {
 				yield break;
 			}
@@ -1175,7 +1171,7 @@ namespace Pathfinding {
 			}
 
 			// Return the list to the pool
-			Pathfinding.Util.ListPool<GraphNode>.Release(nodesInRect);
+			Pathfinding.Util.ListPool<GraphNode>.Release(ref nodesInRect);
 		}
 
 		/** Returns true if a connection between the adjacent nodes \a n1 and \a n2 is valid.
@@ -1193,7 +1189,7 @@ namespace Pathfinding {
 				return false;
 			}
 
-			if (maxClimb <= 0) return true;
+			if (maxClimb <= 0 || collision.use2D) return true;
 
 			if (transform.onlyTranslational) {
 				// Common case optimization.
@@ -1364,20 +1360,6 @@ namespace Pathfinding {
 			}
 		}
 
-		/** Auto links grid graphs together. Called after all graphs have been scanned.
-		 * \see autoLinkGrids
-		 */
-		public void OnPostScan (AstarPath script) {
-			AstarPath.OnPostScan -= new OnScanDelegate(OnPostScan);
-
-			if (!autoLinkGrids || autoLinkDistLimit <= 0) {
-				return;
-			}
-
-			//Link to other grids
-
-			throw new System.NotSupportedException();
-		}
 
 		public override void OnDrawGizmos (RetainedGizmos gizmos, bool drawNodes) {
 			using (var helper = gizmos.GetSingleFrameGizmoHelper(active)) {
@@ -1713,12 +1695,12 @@ namespace Pathfinding {
 			return counter;
 		}
 
-		public GraphUpdateThreading CanUpdateAsync (GraphUpdateObject o) {
+		GraphUpdateThreading IUpdatableGraph.CanUpdateAsync (GraphUpdateObject o) {
 			return GraphUpdateThreading.UnityThread;
 		}
 
-		public void UpdateAreaInit (GraphUpdateObject o) {}
-		public void UpdateAreaPost (GraphUpdateObject o) {}
+		void IUpdatableGraph.UpdateAreaInit (GraphUpdateObject o) {}
+		void IUpdatableGraph.UpdateAreaPost (GraphUpdateObject o) {}
 
 		protected void CalculateAffectedRegions (GraphUpdateObject o, out IntRect originalRect, out IntRect affectRect, out IntRect physicsRect, out bool willChangeWalkability, out int erosion) {
 			// Take the bounds and transform it using the matrix
@@ -1772,7 +1754,7 @@ namespace Pathfinding {
 		}
 
 		/** Internal function to update an area of the graph */
-		public void UpdateArea (GraphUpdateObject o) {
+		void IUpdatableGraph.UpdateArea (GraphUpdateObject o) {
 			if (nodes == null || nodes.Length != width*depth) {
 				Debug.LogWarning("The Grid Graph is not scanned, cannot update area");
 				//Not scanned
@@ -1934,7 +1916,7 @@ namespace Pathfinding {
 			}
 		}
 
-		public override void SerializeExtraInfo (GraphSerializationContext ctx) {
+		protected override void SerializeExtraInfo (GraphSerializationContext ctx) {
 			if (nodes == null) {
 				ctx.writer.Write(-1);
 				return;
@@ -1947,7 +1929,7 @@ namespace Pathfinding {
 			}
 		}
 
-		public override void DeserializeExtraInfo (GraphSerializationContext ctx) {
+		protected override void DeserializeExtraInfo (GraphSerializationContext ctx) {
 			int count = ctx.reader.ReadInt32();
 
 			if (count == -1) {
@@ -1963,7 +1945,7 @@ namespace Pathfinding {
 			}
 		}
 
-		public override void DeserializeSettingsCompatibility (GraphSerializationContext ctx) {
+		protected override void DeserializeSettingsCompatibility (GraphSerializationContext ctx) {
 			base.DeserializeSettingsCompatibility(ctx);
 
 			aspectRatio = ctx.reader.ReadSingle();
@@ -1978,7 +1960,7 @@ namespace Pathfinding {
 			erodeIterations = ctx.reader.ReadInt32();
 			erosionUseTags = ctx.reader.ReadBoolean();
 			erosionFirstTag = ctx.reader.ReadInt32();
-			autoLinkGrids = ctx.reader.ReadBoolean();
+			ctx.reader.ReadBoolean(); // Old field
 			neighbours = (NumNeighbours)ctx.reader.ReadInt32();
 			cutCorners = ctx.reader.ReadBoolean();
 			penaltyPosition = ctx.reader.ReadBoolean();
@@ -1990,7 +1972,7 @@ namespace Pathfinding {
 			uniformEdgeCosts = ctx.reader.ReadBoolean();
 		}
 
-		public override void PostDeserialization () {
+		protected override void PostDeserialization (GraphSerializationContext ctx) {
 			UpdateTransform();
 			SetUpOffsetsAndCosts();
 			GridNode.SetGridGraph((int)graphIndex, this);

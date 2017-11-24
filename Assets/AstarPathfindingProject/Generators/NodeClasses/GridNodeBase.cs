@@ -228,7 +228,7 @@ namespace Pathfinding {
 						otherPN.cost = tmpCost;
 
 						otherPN.H = path.CalculateHScore(other);
-						other.UpdateG(path, otherPN);
+						otherPN.UpdateG(path);
 
 						//Debug.Log ("G " + otherPN.G + " F " + otherPN.F);
 						handler.heap.Add(otherPN);
@@ -295,10 +295,7 @@ namespace Pathfinding {
 				newconns[i] = connections[i];
 			}
 
-			newconns[connLength] = new Connection {
-				node = node,
-				cost = cost
-			};
+			newconns[connLength] = new Connection(node, cost);
 
 			connections = newconns;
 		}
@@ -344,12 +341,9 @@ namespace Pathfinding {
 			}
 		}
 
-		/** Cached to avoid allocations */
-		static readonly System.Version VERSION_3_8_3 = new System.Version(3, 8, 3);
-
 		public override void DeserializeReferences (GraphSerializationContext ctx) {
 			// Grid nodes didn't serialize references before 3.8.3
-			if (ctx.meta.version < VERSION_3_8_3)
+			if (ctx.meta.version < AstarSerializer.V3_8_3)
 				return;
 
 			int count = ctx.reader.ReadInt32();
@@ -360,10 +354,7 @@ namespace Pathfinding {
 				connections = new Connection[count];
 
 				for (int i = 0; i < count; i++) {
-					connections[i] = new Connection {
-						node = ctx.DeserializeNodeReference(),
-						cost = ctx.reader.ReadUInt32()
-					};
+					connections[i] = new Connection(ctx.DeserializeNodeReference(), ctx.reader.ReadUInt32());
 				}
 			}
 		}

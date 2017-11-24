@@ -202,6 +202,7 @@ GameObject:
   - 114: {fileID: 108}
   - 143: {fileID: 102}
   - 114: {fileID: 110}
+  - 114: {fileID: 38}
   m_Layer: 2
   m_Name: Bot
   m_TagString: Untagged
@@ -586,6 +587,18 @@ Transform:
   - {fileID: 50}
   m_Father: {fileID: 39}
   m_RootOrder: 0
+--- !u!114 &38
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 53}
 --- !u!4 &39
 Transform:
   m_ObjectHideFlags: 0
@@ -1677,16 +1690,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f35b84b127b849e38b74966118e7e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
+  version: 2
   repathRate: .100000001
-  target: {fileID: 53}
   canSearch: 1
   canMove: 1
-  speed: 24
+  maxSpeed: 24
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffset: 1
+  rotationIn2D: 0
+  targetCompatibility: {fileID: 0}
   rotationSpeed: 450
   slowdownDistance: 7
   pickNextWaypointDist: 10
   endReachedDistance: 2
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
   anim: {fileID: 97}
   sleepVelocity: .800000012
   animationSpeed: .100000001
@@ -1715,9 +1737,6 @@ MonoBehaviour:
       m_Bits: 4294967295
     useGraphRaycasting: 0
   traversableTags: -3
-  traversableTagsCompatibility:
-    tagsChange: -1
-    tagsSet: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &110
 MonoBehaviour:
