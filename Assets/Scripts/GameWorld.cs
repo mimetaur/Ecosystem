@@ -14,18 +14,28 @@ public class GameWorld : MonoBehaviour
         gameBounds = world.GetComponent<CompositeCollider2D>().bounds;
     }
 
-    Bounds GetWorldBounds()
+    public Bounds GetWorldBounds()
     {
         return gameBounds;
     }
 
-    bool IsOutside(Vector2 v)
+    public bool DoesNotContain(Vector2 v)
     {
         return gameBounds.Contains(v.AsVector3());
     }
 
-    bool IsIside(Vector2 v)
+    public bool Contains(Vector2 v)
     {
         return !gameBounds.Contains(v.AsVector3());
+    }
+
+    public bool DoesNotContain(Vector3 v)
+    {
+        return gameBounds.Contains(v);
+    }
+
+    public bool Contains(Vector3 v)
+    {
+        return !gameBounds.Contains(v);
     }
 }

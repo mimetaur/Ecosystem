@@ -92,9 +92,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 4574407342198024, guid: 6c6f4acf3c80d47bbb78e6c1c10fadeb, type: 2}
-  percentageOfDropping: 50.6
+  percentageOfDropping: 71.5
   initialDelay: 3
-  rate: 2.02
+  rate: 2.45
+  gameManager: {fileID: 0}
 --- !u!114 &114197932394061490
 MonoBehaviour:
   m_ObjectHideFlags: 1
