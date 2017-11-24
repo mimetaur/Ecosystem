@@ -22,6 +22,12 @@ public static class GameUtils
         return q * v3;
     }
 
+    public static Vector2 SnapTo(Vector2 v, float snapAngle)
+    {
+        var v3 = new Vector3(v.x, v.y, 0);
+        return SnapTo(v3, snapAngle);
+    }
+
     public static float Map(float s, float a1, float a2, float b1, float b2)
     {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
