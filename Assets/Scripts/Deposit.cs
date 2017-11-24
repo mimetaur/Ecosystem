@@ -17,7 +17,7 @@ public class Deposit : MonoBehaviour
     [Range(0, 20)]
     public float rate;
 
-    public GameObject gameManager;
+    private GameObject gameManager;
 
     private GameWorld gameWorld;
 
@@ -25,9 +25,14 @@ public class Deposit : MonoBehaviour
     void Start()
     {
         InvokeRepeating("DropABomb", initialDelay, rate);
-        //gameWorld = gameManager.GetComponent<GameWorld>();
+        gameManager = GameObject.Find("GameManager");
+        gameWorld = gameManager.GetComponent<GameWorld>();
     }
 
+
+    void Update() {
+        print(gameWorld.Contains(transform.position));
+    }
     void DropABomb()
     {
         float v = Random.value;
@@ -38,8 +43,9 @@ public class Deposit : MonoBehaviour
 
     void CreateCoin()
     {
-        //if (gameWorld.DoesNotContain(transform.position))
-            //return;
+        if (gameWorld.DoesNotContain(transform.position)) 
+            return;
+        
         var coinsObj = GameObject.Find("Coins");
         var newCoin = Instantiate(coin, transform.position, Quaternion.identity) as Transform;
         newCoin.transform.parent = coinsObj.transform;
