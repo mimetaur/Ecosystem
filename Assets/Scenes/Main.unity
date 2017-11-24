@@ -121,7 +121,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 51.722992
+      value: 53.222992
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -129,7 +129,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.13501489
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -155,6 +155,11 @@ Prefab:
       propertyPath: m_Name
       value: RedEyedRoller (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 50929637431286926, guid: a77244bba0d934ec5bbcceda04d9b3d4,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
   m_IsPrefabParent: 0
@@ -168,6 +173,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4,
     type: 2}
   m_PrefabInternal: {fileID: 272068429}
+--- !u!4 &889504341 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1354151598}
 --- !u!1 &898968096
 GameObject:
   m_ObjectHideFlags: 0
@@ -15111,6 +15121,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50929637431286926, guid: a77244bba0d934ec5bbcceda04d9b3d4,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
   m_IsPrefabParent: 0
@@ -15131,7 +15146,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.13501489
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -15156,6 +15171,11 @@ Prefab:
     - target: {fileID: 1018360337711306, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_Name
       value: RedEyedRoller (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 50929637431286926, guid: a77244bba0d934ec5bbcceda04d9b3d4,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
@@ -15213,7 +15233,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.732143
+  orthographic size: 8.46875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15294,22 +15314,22 @@ Transform:
   - {fileID: 898968097}
   - {fileID: 1776394323}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1354151598
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2119327472}
     m_Modifications:
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 25.01762
+      value: 51.74061
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 14.268639
+      value: 20.584024
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -15333,7 +15353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
@@ -15425,7 +15445,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1687942886
 GameObject:
@@ -15454,7 +15474,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1687942888
 MonoBehaviour:
@@ -17945,7 +17965,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.13501489
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4269428015017884, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -17970,6 +17990,11 @@ Prefab:
     - target: {fileID: 1018360337711306, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
       propertyPath: m_Name
       value: RedEyedRoller (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 50929637431286926, guid: a77244bba0d934ec5bbcceda04d9b3d4,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
@@ -18003,6 +18028,7 @@ Transform:
   - {fileID: 617475647}
   - {fileID: 2036473170}
   - {fileID: 791655961}
+  - {fileID: 889504341}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
