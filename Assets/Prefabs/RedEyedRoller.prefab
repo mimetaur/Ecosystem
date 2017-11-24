@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58938134269627746}
   - component: {fileID: 114197932394061490}
   - component: {fileID: 114257542452223732}
+  - component: {fileID: 114081734600383670}
   m_Layer: 0
   m_Name: RedEyedRoller
   m_TagString: Untagged
@@ -51,12 +52,12 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018360337711306}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.09
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -79,6 +80,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.45
+--- !u!114 &114081734600383670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018360337711306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2899c2668d414d07959c8d1fb7cf8e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 4574407342198024, guid: 6c6f4acf3c80d47bbb78e6c1c10fadeb, type: 2}
+  percentageOfDropping: 50.6
+  initialDelay: 3
+  rate: 2.02
 --- !u!114 &114197932394061490
 MonoBehaviour:
   m_ObjectHideFlags: 1
