@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class GameUtils
@@ -20,4 +21,11 @@ public static class GameUtils
         Quaternion q = Quaternion.AngleAxis(deltaAngle, axis);
         return q * v3;
     }
+
+    public static float Map(float s, float a1, float a2, float b1, float b2)
+    {
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
 }
+
+
