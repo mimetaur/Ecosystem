@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Wander : MonoBehaviour
+public class MoveWeeper : MonoBehaviour
 {
 
     public float radius;
+    public Vector2 target;
+
     IAstarAI ai;
     AIStateMachine machine;
 
@@ -19,8 +21,6 @@ public class Wander : MonoBehaviour
 
     private void Update()
     {
-        if (machine.currentState != AIStateMachine.State.Wander) return;
-
         if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
         {
             ai.destination = PickRandomPoint();

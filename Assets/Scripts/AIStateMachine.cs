@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AIStateMachine : MonoBehaviour {
 
-    enum State { Idle, Wander, Seek }
-    State currentState;
+    public enum State { Idle, Wander, Seek }
+    public State currentState;
 
     private void Start()
     {
