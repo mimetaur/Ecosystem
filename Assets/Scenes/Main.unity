@@ -18075,7 +18075,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15.921875
+  orthographic size: 16.604166
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -18339,6 +18339,7 @@ GameObject:
   - component: {fileID: 1687942888}
   - component: {fileID: 1687942889}
   - component: {fileID: 1687942890}
+  - component: {fileID: 1687942891}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18399,6 +18400,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numWeepers: 6
   weeper: {fileID: 1501051070512082, guid: cde6c06ed66ea493ca0b80116ae90b6d, type: 2}
+--- !u!114 &1687942891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687942886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e581644710b24b77a28c0cac4814ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMushrooms: 22
+  mushroom: {fileID: 4770892967578664, guid: 0dc5b46b26cb4478899ea49fff9e3ad8, type: 2}
 --- !u!1 &1776394322
 GameObject:
   m_ObjectHideFlags: 0

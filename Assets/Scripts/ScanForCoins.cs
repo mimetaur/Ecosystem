@@ -17,7 +17,15 @@ public class ScanForCoins : MonoBehaviour
 
     void Update()
     {            
-        var coins = GameObject.FindGameObjectsWithTag("Pickup");
+        var pickups = GameObject.FindGameObjectsWithTag("Pickup");
+
+        var coins = new List<GameObject>();
+
+        for (int i = 0; i < pickups.Length; i++) {
+            if (pickups[i].name.Contains("Deposit"))
+                coins.Add(pickups[i]);
+        }
+
         var closestCoin = GetClosest(coins);
         if (closestCoin != null) {
             var coinPos = closestCoin.transform.position.AsVector2();
@@ -38,7 +46,7 @@ public class ScanForCoins : MonoBehaviour
 
     // Example algorithm sourced from:
     // https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
-    private GameObject GetClosest(GameObject[] things)
+    private GameObject GetClosest(List<GameObject> things)
     {
         GameObject closestThing = null;
         float distance = Mathf.Infinity;
