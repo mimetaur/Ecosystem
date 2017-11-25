@@ -16,4 +16,11 @@ public static class ExtensionMethods
     {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
+
+    public static Vector2 GetRandomPoint(this Bounds b)
+    {
+        float x = Random.Range(b.min.x, b.max.x);
+        float y = Random.Range(b.min.y, b.max.y);
+        return new Vector2(x, y);
+    }
 }

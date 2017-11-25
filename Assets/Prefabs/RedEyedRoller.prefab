@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58938134269627746}
   - component: {fileID: 114197932394061490}
   - component: {fileID: 114081734600383670}
+  - component: {fileID: 114411366472859394}
   m_Layer: 0
   m_Name: RedEyedRoller
   m_TagString: Player
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018360337711306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65.22299, y: 20.315386, z: 0.13501489}
+  m_LocalPosition: {x: 39.5, y: 15, z: 0.36498508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,6 +108,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0}
   maxSeeAhead: 10
+--- !u!114 &114411366472859394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018360337711306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c6f91b4ad9d469da79f1b0676d7708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212216648812011074
 SpriteRenderer:
   m_ObjectHideFlags: 1
