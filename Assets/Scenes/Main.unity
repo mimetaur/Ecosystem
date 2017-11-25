@@ -18075,7 +18075,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 14
+  orthographic size: 16.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -18132,6 +18132,7 @@ GameObject:
   - component: {fileID: 1176152103}
   - component: {fileID: 1176152100}
   - component: {fileID: 1176152104}
+  - component: {fileID: 1176152105}
   m_Layer: 0
   m_Name: Weeper
   m_TagString: Player
@@ -18252,7 +18253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e91650dc7a6642a88f7dc454006a49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 20
+  radius: 10
   target: {x: 0, y: 0}
 --- !u!61 &1176152101
 BoxCollider2D:
@@ -18313,7 +18314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   threshold: 30
-  coinLocation: {x: 0, y: 0}
+  closestCoinLocation: {x: 0, y: 0}
 --- !u!114 &1176152104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18326,6 +18327,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+--- !u!114 &1176152105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1176152095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3378b96669e3a4bd19e7ee80772c4eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1191654289
 GameObject:
   m_ObjectHideFlags: 0
