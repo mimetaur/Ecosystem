@@ -38,9 +38,7 @@ public class Deposit : MonoBehaviour
 
     void CreateCoin()
     {
-        var coinsObj = GameObject.Find("Coins");
-        var newCoin = Instantiate(coin, transform.position, Quaternion.identity) as Transform;
-        newCoin.transform.parent = coinsObj.transform;
+        Instantiate(coin, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

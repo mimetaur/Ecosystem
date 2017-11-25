@@ -36,8 +36,6 @@ public class SpawnRollers : MonoBehaviour {
     }
 
     void SpawnRollerAt(Vector2 location) {
-        var rollersContainer = GameObject.Find("Rollers");
-        var newRoller = Instantiate(roller, location, Quaternion.identity) as GameObject;
-        newRoller.transform.parent = rollersContainer.transform;
+        Instantiate(roller, location, Quaternion.identity);
     }
 }

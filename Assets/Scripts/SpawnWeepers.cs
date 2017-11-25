@@ -57,10 +57,7 @@ public class SpawnWeepers : MonoBehaviour
 
     void SpawnWeeperAt(Vector2 location)
     {
-        var weepersContainer = GameObject.Find("Weepers");
         var newWeeper = Instantiate(weeper, location, Quaternion.identity) as GameObject;
-        newWeeper.transform.parent = weepersContainer.transform;
-
         var ai = newWeeper.GetComponent<IAstarAI>();
         ai.maxSpeed = Random.Range(1.0f, 3.0f);
     }
