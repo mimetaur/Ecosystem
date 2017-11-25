@@ -17,24 +17,19 @@ public class Deposit : MonoBehaviour
     [Range(0, 20)]
     public float rate;
 
-    private GameObject gameManager;
+    private bool isInBounds = false;
 
-    private GameWorld gameWorld;
 
     // Use this for initialization
     void Start()
     {
         InvokeRepeating("DropABomb", initialDelay, rate);
-        gameManager = GameObject.Find("GameManager");
-        gameWorld = gameManager.GetComponent<GameWorld>();
     }
 
-
-    void Update() {
-        print(gameWorld.Contains(transform.position));
-    }
     void DropABomb()
     {
+        if (!isInBounds) return;
+
         float v = Random.value;
         float num = GameUtils.Map(v, 0.0f, 1.0f, 0, 100);
         if (num < percentageOfDropping)
@@ -43,11 +38,25 @@ public class Deposit : MonoBehaviour
 
     void CreateCoin()
     {
-        if (gameWorld.DoesNotContain(transform.position)) 
-            return;
-        
         var coinsObj = GameObject.Find("Coins");
         var newCoin = Instantiate(coin, transform.position, Quaternion.identity) as Transform;
         newCoin.transform.parent = coinsObj.transform;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "World")
+        {
+            isInBounds = true;
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "World")
+        {
+            isInBounds = false;
+        }
     }
 }

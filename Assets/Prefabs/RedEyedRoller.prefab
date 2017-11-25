@@ -23,11 +23,10 @@ GameObject:
   - component: {fileID: 50929637431286926}
   - component: {fileID: 58938134269627746}
   - component: {fileID: 114197932394061490}
-  - component: {fileID: 114257542452223732}
   - component: {fileID: 114081734600383670}
   m_Layer: 0
   m_Name: RedEyedRoller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018360337711306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53.222992, y: 19.315386, z: 0}
+  m_LocalPosition: {x: 65.22299, y: 20.315386, z: 0.13501489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,10 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 4574407342198024, guid: 6c6f4acf3c80d47bbb78e6c1c10fadeb, type: 2}
-  percentageOfDropping: 71.5
+  percentageOfDropping: 33.2
   initialDelay: 3
-  rate: 2.45
-  gameManager: {fileID: 0}
+  rate: 2.02
 --- !u!114 &114197932394061490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,31 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0}
   maxSeeAhead: 10
---- !u!114 &114257542452223732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1018360337711306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!212 &212216648812011074
 SpriteRenderer:
   m_ObjectHideFlags: 1
