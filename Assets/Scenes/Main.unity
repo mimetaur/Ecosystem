@@ -18087,7 +18087,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.75
+  orthographic size: 18.333334
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -18109,7 +18109,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153311894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.5, y: 11, z: -10}
+  m_LocalPosition: {x: 8.5, y: 8.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -18127,7 +18127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixelsPerUnit: 8
-  verticalUnitsOnScreen: 28
+  verticalUnitsOnScreen: 32
 --- !u!1 &1191654289
 GameObject:
   m_ObjectHideFlags: 0
@@ -18218,7 +18218,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1423243997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44, y: 21.1, z: 0}
+  m_LocalPosition: {x: 65.5, y: 20, z: 0}
   m_LocalScale: {x: 14.7, y: 13.81, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -18363,6 +18363,8 @@ MonoBehaviour:
   spawnArea: {fileID: 1423243997}
   roller: {fileID: 1018360337711306, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
   numRollers: 12
+  initialDelay: 3.03
+  rate: 30.24
 --- !u!1 &1776394322
 GameObject:
   m_ObjectHideFlags: 0
@@ -20903,8 +20905,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1999095752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28, y: 5, z: 0}
-  m_LocalScale: {x: 19.6, y: 57.2, z: 1}
+  m_LocalPosition: {x: -34.5, y: 18.5, z: 0}
+  m_LocalScale: {x: 19.6, y: 22.16, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7

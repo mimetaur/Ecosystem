@@ -94,7 +94,7 @@ MonoBehaviour:
   coin: {fileID: 4574407342198024, guid: 6c6f4acf3c80d47bbb78e6c1c10fadeb, type: 2}
   percentageOfDropping: 33.2
   initialDelay: 3
-  rate: 2.02
+  rate: 2.85
 --- !u!114 &114197932394061490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b634e368510d040eeaf5a732bf09daf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0}
   maxSeeAhead: 10
 --- !u!114 &114411366472859394
 MonoBehaviour:

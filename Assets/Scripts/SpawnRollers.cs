@@ -7,18 +7,33 @@ public class SpawnRollers : MonoBehaviour {
 
     public GameObject spawnArea;
     public GameObject roller;
+
+    [Range(0, 40)]
     public int numRollers;
+
+    [Range(0, 10)]
+    public float initialDelay;
+
+    [Range(5, 80)]
+    public float rate;
+
+    private BoxCollider2D spawnCollider;
 
 
 	// Use this for initialization
 	void Start () {
-        var spawnCollider = spawnArea.GetComponent<BoxCollider2D>();
-        var bounds = spawnCollider.bounds;
-        for (int i = 0; i < numRollers; i++) {
-            Vector2 spawnPoint = bounds.GetRandomPoint();
-            SpawnRollerAt(spawnPoint);          
-        }
+        spawnCollider = spawnArea.GetComponent<BoxCollider2D>();
+        InvokeRepeating("SpawnNewRollers", initialDelay, rate);
 	}
+
+    void SpawnNewRollers() {
+        var bounds = spawnCollider.bounds;
+        for (int i = 0; i < numRollers; i++)
+        {
+            Vector2 spawnPoint = bounds.GetRandomPoint();
+            SpawnRollerAt(spawnPoint);
+        }
+    }
 
     void SpawnRollerAt(Vector2 location) {
         var rollersContainer = GameObject.Find("Rollers");

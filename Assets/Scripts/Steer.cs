@@ -6,9 +6,10 @@ using Pathfinding;
 public class Steer : MonoBehaviour
 {
 
-    public Vector2 target;
-
     public float maxSeeAhead = 10.0f;
+
+    private GameObject destination;
+    private Vector2 target;
 
     private Rigidbody2D rb2d;
 
@@ -20,12 +21,11 @@ public class Steer : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
 
+        destination = GameObject.Find("Roller Die");
+        var bounds = destination.GetComponent<BoxCollider2D>().bounds;
+        target = bounds.GetRandomPoint();
 
-        // set up a target
         maxSpeed = Random.Range(2.5f, 5.0f);
-        float posY = transform.position.y;
-        float destY = Random.Range(posY - 4, posY + 4);
-        target = new Vector2(-20, destY);
         maxAvoidForce = 4.0f;
     }
 
