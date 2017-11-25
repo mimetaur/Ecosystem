@@ -17,6 +17,8 @@ public class MoveWeeper : MonoBehaviour
     {
         ai = GetComponent<IAstarAI>();
         machine = GetComponent<AIStateMachine>();
+
+        ai.destination = PickRandomPoint();
     }
 
     private void Update()
