@@ -24,10 +24,11 @@ GameObject:
   - component: {fileID: 61131328567652704}
   - component: {fileID: 114022429487961612}
   - component: {fileID: 114725938198702130}
-  - component: {fileID: 114834255235162872}
-  - component: {fileID: 114056605607081326}
   - component: {fileID: 114809289381061544}
-  - component: {fileID: 114211008435229056}
+  - component: {fileID: 114817929633875584}
+  - component: {fileID: 114230963699070172}
+  - component: {fileID: 114476937310011862}
+  - component: {fileID: 114462584962007292}
   m_Layer: 0
   m_Name: Weeper
   m_TagString: Player
@@ -118,7 +119,7 @@ MonoBehaviour:
     useGraphRaycasting: 0
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
---- !u!114 &114056605607081326
+--- !u!114 &114230963699070172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -126,11 +127,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501051070512082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e91650dc7a6642a88f7dc454006a49c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ff6cc7482487479281c1035d3699d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 12
---- !u!114 &114211008435229056
+  radius: 6
+--- !u!114 &114462584962007292
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -138,7 +139,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501051070512082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3378b96669e3a4bd19e7ee80772c4eab, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ea0595a23d334d9b8d8edfe43e7f8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Coin
+--- !u!114 &114476937310011862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501051070512082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671808641b2884914a95ce779b72a46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114725938198702130
@@ -175,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
---- !u!114 &114834255235162872
+--- !u!114 &114817929633875584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -183,10 +196,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501051070512082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd41456389c244a4b95085b8abdfd76, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c19665935bc241a2a52f0938da61a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 6
+  threshold: 12
   closestCoinLocation: {x: 0, y: 0}
 --- !u!212 &212805026990577688
 SpriteRenderer:

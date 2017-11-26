@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class MoveWeeper : MonoBehaviour
+public class SeekingMovement : MonoBehaviour
 {
 
     public float radius;
 
     IAstarAI ai;
     AIStateMachine machine;
-    ScanForCoins scan;
+    ScanForTargets scan;
 
 
     private void Start()
     {
         ai = GetComponent<IAstarAI>();
         machine = GetComponent<AIStateMachine>();
-        scan = GetComponent<ScanForCoins>();
+        scan = GetComponent<ScanForTargets>();
 
         ai.destination = GetRandomPoint();
     }
@@ -27,9 +27,12 @@ public class MoveWeeper : MonoBehaviour
         if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
         {
             print("End of path");
-            if (machine.currentState == AIStateMachine.State.Wander) {
-                ai.destination = GetRandomPoint();     
-            } else if (machine.currentState == AIStateMachine.State.Seek) {
+            if (machine.currentState == AIStateMachine.State.Wander)
+            {
+                ai.destination = GetRandomPoint();
+            }
+            else if (machine.currentState == AIStateMachine.State.Seek)
+            {
                 ai.destination = Seek();
             }
             ai.SearchPath();
@@ -38,7 +41,7 @@ public class MoveWeeper : MonoBehaviour
 
     private Vector2 Seek()
     {
-        return scan.closestCoinLocation;
+        return scan.closestTargetPosition;
     }
 
     private Vector2 GetRandomPoint()

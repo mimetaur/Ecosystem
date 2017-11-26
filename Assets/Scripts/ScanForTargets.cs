@@ -2,51 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScanForCoins : MonoBehaviour
+
+[RequireComponent(typeof(TargetTag))]
+public class ScanForTargets : MonoBehaviour
 {
     public float threshold;
 
-    AIStateMachine machine;
+    public Vector2 closestTargetPosition;
 
-    public Vector2 closestCoinLocation;
+    private AIStateMachine machine;
+
+    private string tagName;
 
     private void Start()
     {
         machine = GetComponent<AIStateMachine>();
+        var targetTag = GetComponent<TargetTag>();
+        tagName = targetTag.tagName;
     }
 
     void Update()
-    {            
-        var pickups = GameObject.FindGameObjectsWithTag("Pickup");
+    {
+        FindClosestTargetWithinThreshold();
+    }
 
-        var coins = new List<GameObject>();
-
-        for (int i = 0; i < pickups.Length; i++) {
-            if (pickups[i].name.Contains("Deposit"))
-                coins.Add(pickups[i]);
-        }
-
-        var closestCoin = GetClosest(coins);
-        if (closestCoin != null) {
-            var coinPos = closestCoin.transform.position.AsVector2();
+    private void FindClosestTargetWithinThreshold() {
+        // wander by default
+        machine.currentState = AIStateMachine.State.Wander;
+        var targets = GameObject.FindGameObjectsWithTag(tagName);
+        var closestTarget = GetClosestTarget(targets);
+        if (closestTarget != null)
+        {
+            var targetPos = closestTarget.transform.position.AsVector2();
             var myPos = transform.position.AsVector2();
 
-            if (Vector2.Distance(coinPos, myPos) < threshold)
+            if (Vector2.Distance(targetPos, myPos) < threshold)
             {
+                // seek only if a target is within the threshold
                 machine.currentState = AIStateMachine.State.Seek;
-                closestCoinLocation = coinPos;
-            } else {
-                machine.currentState = AIStateMachine.State.Wander;
+                closestTargetPosition = targetPos;
             }
-        } else {
-            machine.currentState = AIStateMachine.State.Wander;
         }
     }
 
-
     // Example algorithm sourced from:
     // https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
-    private GameObject GetClosest(List<GameObject> things)
+    private GameObject GetClosestTarget(GameObject[] things)
     {
         GameObject closestThing = null;
         float distance = Mathf.Infinity;

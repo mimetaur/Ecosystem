@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61802423761833058}
   m_Layer: 0
   m_Name: Deposit
-  m_TagString: Pickup
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
