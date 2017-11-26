@@ -28,8 +28,10 @@ public class SpawnSeekingCreature : MonoBehaviour
 
     void SpawnCreatureAt(Vector2 location)
     {
-        var newWeeper = Instantiate(creaturePrefab, location, Quaternion.identity) as GameObject;
-        var ai = newWeeper.GetComponent<IAstarAI>();
+        var newCreature = Instantiate(creaturePrefab, location, Quaternion.identity) as GameObject;
+        newCreature.name = string.Format("{0}{1}", creaturePrefab.name, newCreature.GetInstanceID());
+
+        var ai = newCreature.GetComponent<IAstarAI>();
         ai.maxSpeed = Random.Range(1.0f, 3.0f);
     }
 }

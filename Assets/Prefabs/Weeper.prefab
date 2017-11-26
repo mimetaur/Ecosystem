@@ -27,8 +27,8 @@ GameObject:
   - component: {fileID: 114809289381061544}
   - component: {fileID: 114817929633875584}
   - component: {fileID: 114230963699070172}
-  - component: {fileID: 114476937310011862}
   - component: {fileID: 114462584962007292}
+  - component: {fileID: 114892043125497188}
   m_Layer: 0
   m_Name: Weeper
   m_TagString: Player
@@ -60,7 +60,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -143,17 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Coin
---- !u!114 &114476937310011862
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1501051070512082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671808641b2884914a95ce779b72a46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114725938198702130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +190,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 12
   closestTargetPosition: {x: 0, y: 0}
+--- !u!114 &114892043125497188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501051070512082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91ddbb63d8f8427ba20d51bcbef9dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212805026990577688
 SpriteRenderer:
   m_ObjectHideFlags: 1
