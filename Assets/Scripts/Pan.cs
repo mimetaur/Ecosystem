@@ -9,6 +9,8 @@ public class Pan : MonoBehaviour
 
     public float smoothTime = 0.3f;
 
+    public int edgePadding = 10;
+
     private GameWorld gameWorld;
 
     private Vector3 targetPosition;
@@ -26,7 +28,7 @@ public class Pan : MonoBehaviour
 
     private void SetRandomTarget()
     {
-        targetPosition = gameWorld.GetRandomLocation();
+        targetPosition = gameWorld.GetPaddedRandomLocation(edgePadding);
 
     }
 

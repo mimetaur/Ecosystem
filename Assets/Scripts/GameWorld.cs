@@ -51,6 +51,27 @@ public class GameWorld : MonoBehaviour
         return unblockedCells[i];
     }
 
+    private Vector3Int GetPaddedRandomCell(int padding) {
+        var paddedCells = new List<Vector3Int>();
+        var cellBounds = groundTilemap.cellBounds;
+
+        for (int x = (cellBounds.min.x + padding); x < (cellBounds.max.x - padding); x++)
+        {
+            for (int y = (cellBounds.min.y + padding); y < (cellBounds.max.y - padding); y++)
+            {
+                var v = new Vector3Int(x, y, 0);
+                paddedCells.Add(v);
+            }
+        }
+
+        int i = Random.Range(0, paddedCells.Count);
+        return paddedCells[i];
+    }
+
+    public Vector2 GetPaddedRandomLocation(int padding) {
+        return groundTilemap.GetCellCenterWorld(GetPaddedRandomCell(padding));
+    }
+
     public Vector2 GetRandomLocation()
     {
         return groundTilemap.GetCellCenterWorld(GetRandomCell());
