@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff6cc7482487479281c1035d3699d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 16
+  radius: 24
 --- !u!114 &114462584962007292
 MonoBehaviour:
   m_ObjectHideFlags: 1
