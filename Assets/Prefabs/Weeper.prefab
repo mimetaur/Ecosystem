@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff6cc7482487479281c1035d3699d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 6
+  radius: 16
 --- !u!114 &114462584962007292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   threshold: 12
-  closestCoinLocation: {x: 0, y: 0}
+  closestTargetPosition: {x: 0, y: 0}
 --- !u!212 &212805026990577688
 SpriteRenderer:
   m_ObjectHideFlags: 1

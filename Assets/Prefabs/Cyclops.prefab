@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff6cc7482487479281c1035d3699d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 12
+  radius: 4
 --- !u!114 &114832417301254822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c19665935bc241a2a52f0938da61a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 12
+  threshold: 6
   closestTargetPosition: {x: 0, y: 0}
 --- !u!212 &212884119725373252
 SpriteRenderer:
