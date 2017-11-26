@@ -32,6 +32,43 @@ public static class GameUtils
     {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
+
+  
+    // Example algorithm sourced from:
+    // https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
+    public static GameObject FindClosest(Vector3 position, GameObject[] things)
+    {
+        GameObject closestThing = null;
+        float distance = Mathf.Infinity;
+
+        foreach (GameObject thing in things)
+        {
+            Vector3 diff = thing.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closestThing = thing;
+                distance = curDistance;
+            }
+        }
+        return closestThing;
+    }
+
+    public static GameObject FindClosestWithinThreshold(GameObject seeker, GameObject[] targets, float threshold)
+    {
+        GameObject result = null;
+        var seekerPos = seeker.transform.position;
+        var closestTarget = GameUtils.FindClosest(seekerPos, targets);
+
+        if (closestTarget != null)
+        {
+            var targetPos = closestTarget.transform.position.AsVector2();
+
+            if (Vector2.Distance(targetPos, seekerPos.AsVector2()) < threshold)
+                result = closestTarget;
+        }
+        return result;
+    }
 }
 
 

@@ -29,6 +29,8 @@ GameObject:
   - component: {fileID: 114824654555010254}
   - component: {fileID: 114832417301254822}
   - component: {fileID: 114316434102597138}
+  - component: {fileID: 114168269735571250}
+  - component: {fileID: 114535963743842428}
   m_Layer: 0
   m_Name: Cyclops
   m_TagString: Player
@@ -106,6 +108,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Mushroom
+--- !u!114 &114168269735571250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621018232485774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec770c7ec3d3f441f91432a7343ad893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  predatorTag: Enemy
+  threshold: 5
 --- !u!114 &114316434102597138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +130,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b91ddbb63d8f8427ba20d51bcbef9dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114535963743842428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621018232485774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8b405ef6a25493289e28a6f5687ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114573217510960532
@@ -165,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff6cc7482487479281c1035d3699d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
+  radius: 12
 --- !u!114 &114832417301254822
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -23,45 +23,18 @@ public class ScanForTargets : MonoBehaviour
 
     void Update()
     {
-        FindClosestTargetWithinThreshold();
-    }
-
-    private void FindClosestTargetWithinThreshold() {
-        // wander by default
+        if (machine.currentState == AIStateMachine.State.Flee) return;
+        
+        // wander by default, unless fleeing
         machine.currentState = AIStateMachine.State.Wander;
-        var targets = GameObject.FindGameObjectsWithTag(tagName);
-        var closestTarget = GetClosestTarget(targets);
-        if (closestTarget != null)
-        {
-            var targetPos = closestTarget.transform.position.AsVector2();
-            var myPos = transform.position.AsVector2();
+        
 
-            if (Vector2.Distance(targetPos, myPos) < threshold)
-            {
-                // seek only if a target is within the threshold
-                machine.currentState = AIStateMachine.State.Seek;
-                closestTargetPosition = targetPos;
-            }
-        }
-    }
-
-    // Example algorithm sourced from:
-    // https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
-    private GameObject GetClosestTarget(GameObject[] things)
-    {
-        GameObject closestThing = null;
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-        foreach (GameObject thing in things)
+        var target = GameUtils.FindClosestWithinThreshold(this.gameObject, GameObject.FindGameObjectsWithTag(tagName), threshold);
+        if (target != null)
         {
-            Vector3 diff = thing.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closestThing = thing;
-                distance = curDistance;
-            }
+            // seek only if a target is within the threshold    
+            machine.currentState = AIStateMachine.State.Seek;
+            closestTargetPosition = target.transform.position;
         }
-        return closestThing;
     }
 }

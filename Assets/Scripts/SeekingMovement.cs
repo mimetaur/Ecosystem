@@ -12,7 +12,6 @@ public class SeekingMovement : MonoBehaviour
     AIStateMachine machine;
     ScanForTargets scan;
 
-
     private void Start()
     {
         ai = GetComponent<IAstarAI>();
@@ -24,19 +23,23 @@ public class SeekingMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
+        if (machine.currentState == AIStateMachine.State.Flee) return;
+
+        if (machine.currentState == AIStateMachine.State.Seek)
         {
-            print("End of path");
-            if (machine.currentState == AIStateMachine.State.Wander)
-            {
-                ai.destination = GetRandomPoint();
-            }
-            else if (machine.currentState == AIStateMachine.State.Seek)
-            {
-                ai.destination = Seek();
-            }
+            ai.destination = Seek();
             ai.SearchPath();
         }
+        else if (machine.currentState == AIStateMachine.State.Wander)
+        {
+            if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
+            {
+                print("End of path");
+                ai.destination = GetRandomPoint();
+                ai.SearchPath();
+            }
+        }
+
     }
 
     private Vector2 Seek()
@@ -50,4 +53,5 @@ public class SeekingMovement : MonoBehaviour
         point += transform.position.AsVector2();
         return point;
     }
+
 }
