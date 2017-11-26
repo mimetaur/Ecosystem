@@ -18047,7 +18047,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 24.9375
+  orthographic size: 15.1875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -18313,6 +18313,7 @@ GameObject:
   - component: {fileID: 1687942891}
   - component: {fileID: 1687942892}
   - component: {fileID: 1687942890}
+  - component: {fileID: 1687942893}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18401,6 +18402,19 @@ MonoBehaviour:
   numCreatures: 7
   creaturePrefab: {fileID: 1501051070512082, guid: cde6c06ed66ea493ca0b80116ae90b6d,
     type: 2}
+--- !u!114 &1687942893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687942886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c499838c6ecff4d608e759befbb73f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground: {fileID: 898968096}
+  obstacles: {fileID: 1776394322}
 --- !u!1 &1776394322
 GameObject:
   m_ObjectHideFlags: 0

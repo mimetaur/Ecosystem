@@ -22,7 +22,6 @@ public class SmoothCamera2D : MonoBehaviour
 
     private void LateUpdate()
     {
-        //transform.position = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, target.position, cameraSpeed * Time.deltaTime) + offset;
     }
 }

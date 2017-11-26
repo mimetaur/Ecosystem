@@ -1,41 +1,66 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GameWorld : MonoBehaviour
 {
 
-    public GameObject world;
-    private Bounds gameBounds;
+    public GameObject ground;
+    public GameObject obstacles;
+
+    private Tilemap groundTilemap;
+    private Tilemap obstaclesTilemap;
+
+    private List<Vector3Int> allCells = new List<Vector3Int>();
+    private List<Vector3Int> unblockedCells = new List<Vector3Int>();
 
     // Use this for initialization
     void Start()
     {
-        gameBounds = world.GetComponent<CompositeCollider2D>().bounds;
+        groundTilemap = ground.GetComponent<Tilemap>();
+        obstaclesTilemap = obstacles.GetComponent<Tilemap>();
+
+        ScanTilemaps();
     }
 
-    public Bounds GetWorldBounds()
+    private void ScanTilemaps()
     {
-        return gameBounds;
+        var cellBounds = groundTilemap.cellBounds;
+        for (int x = cellBounds.min.x; x < cellBounds.max.x; x++)
+        {
+            for (int y = cellBounds.min.y; y < cellBounds.max.y; y++)
+            {
+                var v = new Vector3Int(x, y, 0);
+                allCells.Add(v);
+                if (obstaclesTilemap.GetTile(v) == null)
+                    unblockedCells.Add(v);
+            }
+        }
     }
 
-    public bool DoesNotContain(Vector2 v)
+    private Vector3Int GetRandomCell()
     {
-        return gameBounds.Contains(v.AsVector3());
+        int i = Random.Range(0, allCells.Count);
+        return allCells[i];
     }
 
-    public bool Contains(Vector2 v)
+    private Vector3Int GetRandomUnblockedCell()
     {
-        return !gameBounds.Contains(v.AsVector3());
+        int i = Random.Range(0, unblockedCells.Count);
+        return unblockedCells[i];
     }
 
-    public bool DoesNotContain(Vector3 v)
+    public Vector2 GetRandomLocation()
     {
-        return gameBounds.Contains(v);
+        return groundTilemap.GetCellCenterWorld(GetRandomCell());
     }
 
-    public bool Contains(Vector3 v)
+    public Vector2 GetRandomUnblockedLocation()
     {
-        return !gameBounds.Contains(v);
+
+        return groundTilemap.GetCellCenterWorld(GetRandomUnblockedCell());
     }
+
+
 }
