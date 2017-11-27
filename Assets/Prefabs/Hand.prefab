@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c19665935bc241a2a52f0938da61a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 20
+  threshold: 10
   closestTargetPosition: {x: 0, y: 0}
 --- !u!114 &114476333031923322
 MonoBehaviour:

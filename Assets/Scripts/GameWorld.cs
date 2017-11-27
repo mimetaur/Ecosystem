@@ -16,7 +16,7 @@ public class GameWorld : MonoBehaviour
     private List<Vector3Int> unblockedCells = new List<Vector3Int>();
 
     // Use this for initialization
-    void Awake()
+    public void Initialize()
     {
         groundTilemap = ground.GetComponent<Tilemap>();
         obstaclesTilemap = obstacles.GetComponent<Tilemap>();
@@ -79,7 +79,6 @@ public class GameWorld : MonoBehaviour
 
     public Vector2 GetRandomUnblockedLocation()
     {
-
         return groundTilemap.GetCellCenterWorld(GetRandomUnblockedCell());
     }
 
