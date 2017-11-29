@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114475743954774444}
   - component: {fileID: 114671311301003232}
   - component: {fileID: 114266005937782104}
+  - component: {fileID: 114316228420709124}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Enemy
@@ -127,6 +128,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91ddbb63d8f8427ba20d51bcbef9dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114316228420709124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498878960245882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2158a827e997d47e3be162ca0f581c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114475743954774444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c19665935bc241a2a52f0938da61a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 10
+  threshold: 9
   closestTargetPosition: {x: 0, y: 0}
 --- !u!114 &114476333031923322
 MonoBehaviour:
