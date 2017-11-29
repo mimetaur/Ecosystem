@@ -8,7 +8,8 @@ public class Flee : MonoBehaviour
     private AIStateMachine machine;
     private GameObject predator;
     IAstarAI ai;
-    private SpriteRenderer spriteRenderer;
+
+    private GameObject exclamationMark;
 
     // Use this for initialization
     void Start()
@@ -17,19 +18,26 @@ public class Flee : MonoBehaviour
         machine = GetComponent<AIStateMachine>();
         predator = null;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        exclamationMark = (GameObject)Instantiate(Resources.Load("Exclamation Mark"));
+        exclamationMark.transform.parent = this.transform;
+        //exclamationMark.transform.position = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+        exclamationMark.SetActive(false);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (machine.currentState != AIStateMachine.State.Flee || predator == null) {
-            spriteRenderer.color = Color.white;
-            return;  
-        } 
-        spriteRenderer.color = Color.red;
+        if (machine.currentState != AIStateMachine.State.Flee || predator == null)
+        {
+            //spriteRenderer.color = Color.white;
+            exclamationMark.SetActive(false);
+            return;
+        }
+        exclamationMark.SetActive(true);
+        exclamationMark.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
+        //spriteRenderer.color = Color.red;
 
         ai.destination = FleePredator();
         ai.SearchPath();

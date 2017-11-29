@@ -22,7 +22,6 @@ public class Prey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(machine.currentState);
         predator = CheckForPredators();
 
         if (predator != null)
