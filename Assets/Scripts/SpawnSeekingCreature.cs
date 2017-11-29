@@ -12,16 +12,16 @@ public class SpawnSeekingCreature : MonoBehaviour
 
     public GameObject creaturePrefab;
 
-    private GameWorld gameWorld;
+    private GameWorld world;
 
     // Use this for initialization
     void Start()
     {
-        gameWorld = GetComponent<GameWorld>();
+        world = GameManager.instance.world;
 
         for (int i = 0; i < numCreatures; i++)
         {
-            SpawnCreatureAt(gameWorld.GetRandomUnblockedLocation());
+            SpawnCreatureAt(world.GetRandomUnblockedLocation());
         }
     }
 

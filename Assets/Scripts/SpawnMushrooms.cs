@@ -10,15 +10,15 @@ public class SpawnMushrooms : MonoBehaviour
 
     public Transform mushroom;
 
-    private GameWorld gameWorld;
+    private GameWorld world;
 
     void Start()
     {
-        gameWorld = GetComponent<GameWorld>();
+        world = GameManager.instance.world;
 
         for (int i = 0; i < numMushrooms; i++)
         {
-            SpawnMushroomAt(gameWorld.GetRandomUnblockedLocation());
+            SpawnMushroomAt(world.GetRandomUnblockedLocation());
         }
     }
 

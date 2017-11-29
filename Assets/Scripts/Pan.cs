@@ -11,7 +11,7 @@ public class Pan : MonoBehaviour
 
     public int edgePadding = 10;
 
-    private GameWorld gameWorld;
+    private GameWorld world;
 
     private Vector3 targetPosition;
 
@@ -21,14 +21,14 @@ public class Pan : MonoBehaviour
 
     void Start()
     {
-        gameWorld = GameObject.Find("GameManager").GetComponent<GameWorld>();
+        world = GameManager.instance.world;
         zOffset = transform.position.z;
         InvokeRepeating("SetRandomTarget", 0.0f, panRate);
     }
 
     private void SetRandomTarget()
     {
-        targetPosition = gameWorld.GetPaddedRandomLocation(edgePadding);
+        targetPosition = world.GetPaddedRandomLocation(edgePadding);
 
     }
 
