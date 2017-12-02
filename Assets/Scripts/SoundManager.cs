@@ -7,7 +7,12 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance = null;
     public Range volumeRange;
 
-    private AudioSource source;
+    public AudioSource fxSource;
+    public AudioSource musicSource;
+
+    public AudioClip musicLoop;
+
+    public float musicDelay;
 
     [System.Serializable]
     public class Range
@@ -32,7 +37,13 @@ public class SoundManager : MonoBehaviour
         // preserve between scenes
         DontDestroyOnLoad(gameObject);
 
-        source = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        musicSource.clip = musicLoop;
+        musicSource.loop = true;
+        musicSource.PlayDelayed(musicDelay);
     }
 
     public void PlaySound(AudioClip clip)
@@ -43,9 +54,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip, float volume, float pan = 0.0f)
     {
-        source.panStereo = pan;
+        fxSource.panStereo = pan;
         print("Played sound " + clip.name);
-        source.PlayOneShot(clip, volume);
+        fxSource.PlayOneShot(clip, volume);
     }
 
     public void PlayRandomizedSound(AudioClip[] clips)
@@ -60,8 +71,8 @@ public class SoundManager : MonoBehaviour
         var clip = clips[randomIdx];
         print("Played sound " + clip.name);
 
-        source.panStereo = pan;
+        fxSource.panStereo = pan;
 
-        source.PlayOneShot(clip, volume);
+        fxSource.PlayOneShot(clip, volume);
     }
 }
