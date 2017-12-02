@@ -314,7 +314,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 023364cbc10644a26bf07b91047be4ca, type: 3}
   - {fileID: 8300000, guid: 768c473b2ddac4bd39ba96a1eeb4c1ce, type: 3}
   volumeRange:
-    min: 0.45
+    min: 0.55
     max: 0.75
 --- !u!212 &212904868435739270
 SpriteRenderer:
