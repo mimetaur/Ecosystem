@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114197932394061490}
   - component: {fileID: 114081734600383670}
   - component: {fileID: 114411366472859394}
+  - component: {fileID: 114124380415969266}
   m_Layer: 0
   m_Name: RedEyedRoller
   m_TagString: Player
@@ -95,6 +96,27 @@ MonoBehaviour:
   percentageOfDropping: 33.2
   initialDelay: 3
   rate: 2.85
+--- !u!114 &114124380415969266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018360337711306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dafbcfd940341f09a9e83ddfac7ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: e0eeb383bcd414e6a8f614cf29cda960, type: 3}
+  - {fileID: 8300000, guid: 892e6e4a6e3fb4f08a5ae75b9df3b80f, type: 3}
+  - {fileID: 8300000, guid: eda44e891c19d4d8aaa969e9c0977423, type: 3}
+  - {fileID: 8300000, guid: e189942935a2d4533bfc4d44f5b3e7a9, type: 3}
+  - {fileID: 8300000, guid: e5fbfe9904b194ac5827ee60f04d8989, type: 3}
+  - {fileID: 8300000, guid: 0649efe5215344c33973e686ae28a629, type: 3}
+  volumeRange:
+    min: 0.1
+    max: 0.2
 --- !u!114 &114197932394061490
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,11 +19,14 @@ public class Deposit : MonoBehaviour
 
     private bool isInBounds = false;
 
+    private EatSounds eatSounds;
+
 
     // Use this for initialization
     void Start()
     {
         InvokeRepeating("DropABomb", initialDelay, rate);
+        eatSounds = GetComponent<EatSounds>();
     }
 
     void DropABomb()
@@ -38,6 +41,7 @@ public class Deposit : MonoBehaviour
 
     void CreateCoin()
     {
+        if (eatSounds != null) eatSounds.Play();
         Instantiate(coin, transform.position, Quaternion.identity);
     }
 

@@ -141,8 +141,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a8ad8d494f0d64e0793947570c76e042, type: 3}
   - {fileID: 8300000, guid: 51577f23f740f42489a62f9297c3561f, type: 3}
   volumeRange:
-    min: 0.15
-    max: 0.3
+    min: 0.1
+    max: 0.2
 --- !u!114 &114316434102597138
 MonoBehaviour:
   m_ObjectHideFlags: 1
