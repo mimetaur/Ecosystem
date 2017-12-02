@@ -7,12 +7,14 @@ public class Eat : MonoBehaviour
 {
     private string tagName;
     private AIStateMachine machine;
+    private EatSounds eatSounds;
 
     private void Start()
     {
         machine = GetComponent<AIStateMachine>();
         var targetTag = GetComponent<TargetTag>();
         tagName = targetTag.tagName;
+        eatSounds = GetComponent<EatSounds>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,6 +36,7 @@ public class Eat : MonoBehaviour
         string debug = string.Format("{0} ate {1} at {2}", name, other.name, other.transform.position.AsVector2());
         print(debug);
 
+        if (eatSounds != null) eatSounds.Play();
         machine.currentState = AIStateMachine.State.Wander;
         Destroy(other.gameObject);
     }

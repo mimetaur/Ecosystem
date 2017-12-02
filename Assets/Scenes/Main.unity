@@ -112,6 +112,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &3790292
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819249107294810, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114574456436039610, guid: e6215e4291c5d4d6ba875f2f06d4228c,
+        type: 2}
+      propertyPath: spawnArea
+      value: 
+      objectReference: {fileID: 1423243997}
+    - target: {fileID: 114210086472766124, guid: e6215e4291c5d4d6ba875f2f06d4228c,
+        type: 2}
+      propertyPath: ground
+      value: 
+      objectReference: {fileID: 898968096}
+    - target: {fileID: 114210086472766124, guid: e6215e4291c5d4d6ba875f2f06d4228c,
+        type: 2}
+      propertyPath: obstacles
+      value: 
+      objectReference: {fileID: 1776394322}
+    - target: {fileID: 114340725339108030, guid: e6215e4291c5d4d6ba875f2f06d4228c,
+        type: 2}
+      propertyPath: area
+      value: 
+      objectReference: {fileID: 1987746474}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e6215e4291c5d4d6ba875f2f06d4228c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &898968096
 GameObject:
   m_ObjectHideFlags: 0
@@ -33168,7 +33230,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.125
+  orthographic size: 10.0375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -33435,152 +33497,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1687942886
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1687942887}
-  - component: {fileID: 1687942888}
-  - component: {fileID: 1687942889}
-  - component: {fileID: 1687942891}
-  - component: {fileID: 1687942892}
-  - component: {fileID: 1687942890}
-  - component: {fileID: 1687942893}
-  - component: {fileID: 1687942894}
-  - component: {fileID: 1687942895}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1687942887
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1687942888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57d4fd7815d85469b81bcf4a357e8087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1687942889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ef0592f8b7d4e159bf1653d10dd4ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnArea: {fileID: 1423243997}
-  roller: {fileID: 1018360337711306, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
-  numRollers: 18
-  initialDelay: 0
-  rate: 30.24
---- !u!114 &1687942890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4511f2fcbde3c458ba3b9de5de5611bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numCreatures: 16
-  creaturePrefab: {fileID: 1621018232485774, guid: fb3c6ab495fea4110972d28ef3a9cf94,
-    type: 2}
---- !u!114 &1687942891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e581644710b24b77a28c0cac4814ebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numMushrooms: 22
-  mushroom: {fileID: 4770892967578664, guid: 0dc5b46b26cb4478899ea49fff9e3ad8, type: 2}
---- !u!114 &1687942892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4511f2fcbde3c458ba3b9de5de5611bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numCreatures: 12
-  creaturePrefab: {fileID: 1501051070512082, guid: cde6c06ed66ea493ca0b80116ae90b6d,
-    type: 2}
---- !u!114 &1687942893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c499838c6ecff4d608e759befbb73f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ground: {fileID: 898968096}
-  obstacles: {fileID: 1776394322}
---- !u!114 &1687942894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e082528b60ab344bc96743387e5c1bfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxCreatures: 4
-  creaturePrefab: {fileID: 1498878960245882, guid: ce3afccb2a07642e2a5e21ebe5238b5d,
-    type: 2}
-  area: {fileID: 1987746474}
-  initialDelay: 3
-  rate: 20
---- !u!114 &1687942895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3ea8c58308e40899f9d2257ee2f512, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  world: {fileID: 0}
 --- !u!1 &1776394322
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,8 @@ GameObject:
   - component: {fileID: 114316434102597138}
   - component: {fileID: 114168269735571250}
   - component: {fileID: 114535963743842428}
+  - component: {fileID: 114270075012442866}
+  - component: {fileID: 82066023246368888}
   m_Layer: 0
   m_Name: Cyclops
   m_TagString: Player
@@ -96,6 +98,92 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &82066023246368888
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621018232485774}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 48
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.565
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.88571733
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114084148287543474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +209,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   predatorTag: Enemy
   threshold: 5
+--- !u!114 &114270075012442866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621018232485774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dafbcfd940341f09a9e83ddfac7ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 1efc13bb5ed0844fcabb4b0318d0c43b, type: 3}
+  - {fileID: 8300000, guid: 83da103b300654a6691d4a678dedf961, type: 3}
+  - {fileID: 8300000, guid: b87f74b6df3ce4df888606bf391bf6af, type: 3}
+  - {fileID: 8300000, guid: 888787994b9bd44069b6c7214b08938d, type: 3}
+  - {fileID: 8300000, guid: a8ad8d494f0d64e0793947570c76e042, type: 3}
+  - {fileID: 8300000, guid: 51577f23f740f42489a62f9297c3561f, type: 3}
+  volumeRange:
+    min: 0.25
+    max: 0.45
 --- !u!114 &114316434102597138
 MonoBehaviour:
   m_ObjectHideFlags: 1

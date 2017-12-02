@@ -33,7 +33,7 @@ public static class GameUtils
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
 
-  
+
     // Example algorithm sourced from:
     // https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
     public static GameObject FindClosest(Vector3 position, GameObject[] things)
@@ -68,6 +68,18 @@ public static class GameUtils
                 result = closestTarget;
         }
         return result;
+    }
+
+    public static bool IsVisibleInCamera(Bounds bounds, Camera camera)
+    {
+        var planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        return GeometryUtility.TestPlanesAABB(planes, bounds);
+    }
+
+    public static bool IsVisibleInCamera(Bounds bounds)
+    {
+        var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        return GeometryUtility.TestPlanesAABB(planes, bounds);
     }
 }
 
