@@ -28,7 +28,12 @@ public class SeekingMovement : MonoBehaviour
         if (machine.currentState == AIStateMachine.State.Seek)
         {
             ai.destination = Seek();
-            ai.SearchPath();
+
+            if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
+            {
+                print("End of path");
+                ai.SearchPath();
+            }
         }
         else if (machine.currentState == AIStateMachine.State.Wander)
         {

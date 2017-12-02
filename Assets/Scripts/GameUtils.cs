@@ -81,6 +81,11 @@ public static class GameUtils
         var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
         return GeometryUtility.TestPlanesAABB(planes, bounds);
     }
+
+    public static float PositionInFrameToAudioPan(Vector3 pos) {
+        float xPos = Camera.main.WorldToViewportPoint(pos).x;
+        return GameUtils.Map(xPos, 0.0f, 1.0f, -1.0f, 1.0f);
+    }
 }
 
 
