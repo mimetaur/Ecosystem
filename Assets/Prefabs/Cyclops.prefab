@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 114168269735571250}
   - component: {fileID: 114535963743842428}
   - component: {fileID: 114270075012442866}
+  - component: {fileID: 114997641195477056}
   m_Layer: 0
   m_Name: Cyclops
   m_TagString: Player
@@ -141,8 +142,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a8ad8d494f0d64e0793947570c76e042, type: 3}
   - {fileID: 8300000, guid: 51577f23f740f42489a62f9297c3561f, type: 3}
   volumeRange:
-    min: 0.1
-    max: 0.2
+    min: 0.2
+    max: 0.35
 --- !u!114 &114316434102597138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8b405ef6a25493289e28a6f5687ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rate: 0.75
 --- !u!114 &114573217510960532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,6 +251,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 6
   closestTargetPosition: {x: 0, y: 0}
+--- !u!114 &114997641195477056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621018232485774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7113249a83f574e5485466ed590c92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: b5577ebe2866f4d39ad4c6feeb1224c8, type: 3}
+  - {fileID: 8300000, guid: 1f696531780f54d77a167abd8eabd555, type: 3}
+  - {fileID: 8300000, guid: 65386bce3ab87473faa6cfce8746817c, type: 3}
+  - {fileID: 8300000, guid: 4aa485adde4ad44249e6b0b86ea42e4c, type: 3}
+  - {fileID: 8300000, guid: e69e66d00612e430ebb869c85ca3dc9a, type: 3}
+  - {fileID: 8300000, guid: b70d662741ca640148de29a964b3396e, type: 3}
+  volumeRange:
+    min: 0.25
+    max: 0.75
 --- !u!212 &212884119725373252
 SpriteRenderer:
   m_ObjectHideFlags: 1
