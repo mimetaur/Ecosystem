@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4574407342198024}
   - component: {fileID: 212187549986774862}
   - component: {fileID: 61802423761833058}
+  - component: {fileID: 114998528695292858}
   m_Layer: 0
   m_Name: Deposit
   m_TagString: Coin
@@ -66,6 +67,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3766322, y: 0.2514119}
   m_EdgeRadius: 0
+--- !u!114 &114998528695292858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797102618102678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e984e5a29d74654a8b43421a205075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime:
+    minLifetime: 120
+    maxLifetime: 240
 --- !u!212 &212187549986774862
 SpriteRenderer:
   m_ObjectHideFlags: 1
