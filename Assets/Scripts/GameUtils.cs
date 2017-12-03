@@ -92,8 +92,9 @@ public static class GameUtils
         Vector2 positionInViewport = Camera.main.WorldToViewportPoint(pos).AsVector2();
         Vector2 frameCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane));
         float dist = Vector2.Distance(positionInViewport, frameCenter);
+        float maxDist = Vector2.Distance(frameCenter, new Vector2(Screen.width, Screen.height));
 
-        return currentVolume * GameUtils.Map(dist, 0.0f, Screen.width, 0.75f, 1.25f);
+        return currentVolume * GameUtils.Map(dist, 0.0f, maxDist, 0.75f, 1.25f);
     }
 }
 
