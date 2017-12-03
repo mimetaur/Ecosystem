@@ -205,16 +205,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 82954769572323518, guid: 4ae5fd617fa334ebf8982598ede80271,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.301
-      objectReference: {fileID: 0}
-    - target: {fileID: 114986015062718504, guid: 4ae5fd617fa334ebf8982598ede80271,
-        type: 2}
-      propertyPath: pitchWaver
-      value: 0.017
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ae5fd617fa334ebf8982598ede80271, type: 2}
   m_IsPrefabParent: 0
