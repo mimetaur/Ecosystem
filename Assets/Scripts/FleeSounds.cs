@@ -29,6 +29,7 @@ public class FleeSounds : MonoBehaviour
         if (!GameUtils.IsVisibleInCamera(sr.bounds, Camera.main)) return;
 
         float vol = Random.Range(volumeRange.min, volumeRange.max);
+        vol = GameUtils.PositionInFrameToAudioVolume(transform.position, vol);
         float pan = GameUtils.PositionInFrameToAudioPan(transform.position);
 
         SoundManager.instance.PlayRandomizedSound(clips, vol, pan);

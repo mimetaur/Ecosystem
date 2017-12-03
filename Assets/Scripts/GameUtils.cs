@@ -86,6 +86,15 @@ public static class GameUtils
         float xPos = Camera.main.WorldToViewportPoint(pos).x;
         return GameUtils.Map(xPos, 0.0f, 1.0f, -1.0f, 1.0f);
     }
+
+    public static float PositionInFrameToAudioVolume(Vector3 pos, float currentVolume)
+    {
+        Vector2 positionInViewport = Camera.main.WorldToViewportPoint(pos).AsVector2();
+        Vector2 frameCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane));
+        float dist = Vector2.Distance(positionInViewport, frameCenter);
+
+        return currentVolume * GameUtils.Map(dist, 0.0f, Screen.width, 0.75f, 1.25f);
+    }
 }
 
 
