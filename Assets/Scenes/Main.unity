@@ -210,6 +210,11 @@ Prefab:
       propertyPath: m_Volume
       value: 0.301
       objectReference: {fileID: 0}
+    - target: {fileID: 114986015062718504, guid: 4ae5fd617fa334ebf8982598ede80271,
+        type: 2}
+      propertyPath: pitchWaver
+      value: 0.017
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ae5fd617fa334ebf8982598ede80271, type: 2}
   m_IsPrefabParent: 0
@@ -33402,7 +33407,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.041667
+  orthographic size: 9.583333
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

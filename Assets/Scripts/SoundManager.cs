@@ -7,6 +7,11 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance = null;
     public Range volumeRange;
 
+    public bool varyPitch = true;
+
+    [Range(0.01f, 0.5f)]
+    public float pitchWaver;
+
     public AudioSource fxSource;
     public AudioSource musicSource;
 
@@ -56,6 +61,7 @@ public class SoundManager : MonoBehaviour
     {
         fxSource.panStereo = pan;
         print("Played sound " + clip.name);
+        if (varyPitch) fxSource.pitch = 1.0f + Random.Range(-pitchWaver, pitchWaver);
         fxSource.PlayOneShot(clip, volume);
     }
 
@@ -72,7 +78,7 @@ public class SoundManager : MonoBehaviour
         print("Played sound " + clip.name);
 
         fxSource.panStereo = pan;
-
+        if (varyPitch) fxSource.pitch = 1.0f + Random.Range(-pitchWaver, pitchWaver);
         fxSource.PlayOneShot(clip, volume);
     }
 }
