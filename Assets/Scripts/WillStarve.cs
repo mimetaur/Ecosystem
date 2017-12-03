@@ -8,10 +8,13 @@ public class WillStarve : MonoBehaviour
 
     private float hasGoneWithoutFoodForSecs;
 
+    private OnDie onDie;
+
     // Use this for initialization
     void Start()
     {
         hasGoneWithoutFoodForSecs = 0.0f;
+        onDie = GetComponent<OnDie>();
     }
 
     // Update is called once per frame
@@ -20,6 +23,7 @@ public class WillStarve : MonoBehaviour
         hasGoneWithoutFoodForSecs += Time.deltaTime;
 
         if (hasGoneWithoutFoodForSecs > canGoWithoutFoodForSecs) {
+            onDie.Die();
             Destroy(this.gameObject);
         }
     }

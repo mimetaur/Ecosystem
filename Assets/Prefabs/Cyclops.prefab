@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 114535963743842428}
   - component: {fileID: 114270075012442866}
   - component: {fileID: 114997641195477056}
+  - component: {fileID: 114641943777677988}
   m_Layer: 0
   m_Name: Cyclops
   m_TagString: Player
@@ -205,6 +206,18 @@ MonoBehaviour:
     useGraphRaycasting: 0
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!114 &114641943777677988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621018232485774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83d6dc76e109433183fc99e1e4a7e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1241311964024622, guid: 1ce59ada4eb9f4b5e8cf6ad0518afb3c, type: 2}
 --- !u!114 &114824654555010254
 MonoBehaviour:
   m_ObjectHideFlags: 1

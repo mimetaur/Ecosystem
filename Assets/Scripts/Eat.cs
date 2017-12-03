@@ -41,6 +41,9 @@ public class Eat : MonoBehaviour
         if (eatSounds != null) eatSounds.Play();
         if (willStarve != null) willStarve.DidEat();
 
+        var onDie = other.GetComponent<OnDie>();
+        if (onDie != null) onDie.Die();
+
         machine.currentState = AIStateMachine.State.Wander;
         Destroy(other.gameObject);
     }

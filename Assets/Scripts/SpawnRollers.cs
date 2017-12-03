@@ -22,7 +22,7 @@ public class SpawnRollers : MonoBehaviour
     void Start()
     {
         spawnCollider = spawnArea.GetComponent<BoxCollider2D>();
-        InvokeRepeating("SpawnNewRollers", 0, 2.0f);
+        InvokeRepeating("SpawnNewRollers", initialDelay, rate);
     }
 
     void SpawnNewRollers()

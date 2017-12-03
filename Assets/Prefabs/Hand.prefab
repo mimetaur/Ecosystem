@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 114316228420709124}
   - component: {fileID: 114922384219071306}
   - component: {fileID: 114250164313088820}
+  - component: {fileID: 114348908128530844}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Enemy
@@ -153,6 +154,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2158a827e997d47e3be162ca0f581c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114348908128530844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498878960245882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83d6dc76e109433183fc99e1e4a7e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1340811644762656, guid: cced83dfd49e0484bb538234d1725abd, type: 2}
 --- !u!114 &114475743954774444
 MonoBehaviour:
   m_ObjectHideFlags: 1
