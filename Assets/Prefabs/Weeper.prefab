@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114230963699070172}
   - component: {fileID: 114462584962007292}
   - component: {fileID: 114892043125497188}
+  - component: {fileID: 114960584343941086}
   - component: {fileID: 114620405244195684}
   - component: {fileID: 114125730651867276}
   - component: {fileID: 114591147657992260}
@@ -272,6 +273,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91ddbb63d8f8427ba20d51bcbef9dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114960584343941086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501051070512082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b421fe2b9e204c1f8859bc14c887771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canGoWithoutFoodForSecs: 135
 --- !u!212 &212805026990577688
 SpriteRenderer:
   m_ObjectHideFlags: 1
