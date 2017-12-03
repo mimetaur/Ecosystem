@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 114266005937782104}
   - component: {fileID: 114316228420709124}
   - component: {fileID: 114922384219071306}
+  - component: {fileID: 114250164313088820}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Enemy
@@ -118,6 +119,18 @@ MonoBehaviour:
   interpolatePathSwitches: 1
   switchPathInterpolationSpeed: 5
   targetCompatibility: {fileID: 0}
+--- !u!114 &114250164313088820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498878960245882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b421fe2b9e204c1f8859bc14c887771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canGoWithoutFoodForSecs: 120
 --- !u!114 &114266005937782104
 MonoBehaviour:
   m_ObjectHideFlags: 1

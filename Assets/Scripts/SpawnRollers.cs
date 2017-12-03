@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnRollers : MonoBehaviour {
+public class SpawnRollers : MonoBehaviour
+{
 
-    public GameObject area;
+    public GameObject spawnArea;
     public GameObject roller;
 
     [Range(0, 40)]
@@ -16,17 +17,18 @@ public class SpawnRollers : MonoBehaviour {
     [Range(5, 80)]
     public float rate;
 
-    private Bounds bounds;
+    private BoxCollider2D spawnCollider;
 
+    void Start()
+    {
+        spawnCollider = spawnArea.GetComponent<BoxCollider2D>();
+        InvokeRepeating("SpawnNewRollers", 0, 2.0f);
+    }
 
-	// Use this for initialization
-	void Start () {
-        bounds = area.GetComponent<Collider2D>().bounds;
-
-        InvokeRepeating("SpawnNewRollers", initialDelay, rate);
-	}
-
-    void SpawnNewRollers() {
+    void SpawnNewRollers()
+    {
+        print("Spawning new rollers");
+        var bounds = spawnCollider.bounds;
         for (int i = 0; i < numRollers; i++)
         {
             Vector2 spawnPoint = bounds.GetRandomPoint();
@@ -34,7 +36,8 @@ public class SpawnRollers : MonoBehaviour {
         }
     }
 
-    void SpawnRollerAt(Vector2 location) {
+    void SpawnRollerAt(Vector2 location)
+    {
         Instantiate(roller, location, Quaternion.identity);
     }
 }

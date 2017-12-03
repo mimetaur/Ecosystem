@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime:
-    minLifetime: 120
-    maxLifetime: 240
+    minLifetime: 12
+    maxLifetime: 24
 --- !u!212 &212187549986774862
 SpriteRenderer:
   m_ObjectHideFlags: 1

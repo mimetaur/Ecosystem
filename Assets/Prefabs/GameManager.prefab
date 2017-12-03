@@ -21,13 +21,12 @@ GameObject:
   - component: {fileID: 4819249107294810}
   - component: {fileID: 114186600219628834}
   - component: {fileID: 114929899072737510}
-  - component: {fileID: 114574456436039610}
   - component: {fileID: 114210086472766124}
   - component: {fileID: 114340725339108030}
   - component: {fileID: 114152819155898178}
   - component: {fileID: 114098578807744254}
+  - component: {fileID: 114659938623297588}
   - component: {fileID: 114527669936307742}
-  - component: {fileID: 114017331046935718}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48,20 +47,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114017331046935718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300925161611524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e984e5a29d74654a8b43421a205075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifetime:
-    minLifetime: 0
-    maxLifetime: 0
 --- !u!114 &114098578807744254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +142,7 @@ MonoBehaviour:
   maxPickups: 36
   initialDelay: 10
   rate: 8
---- !u!114 &114574456436039610
+--- !u!114 &114659938623297588
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -168,11 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ef0592f8b7d4e159bf1653d10dd4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: {fileID: 0}
+  spawnArea: {fileID: 0}
   roller: {fileID: 1018360337711306, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
-  numRollers: 18
+  numRollers: 6
   initialDelay: 0
-  rate: 30.24
+  rate: 12
 --- !u!114 &114929899072737510
 MonoBehaviour:
   m_ObjectHideFlags: 1
