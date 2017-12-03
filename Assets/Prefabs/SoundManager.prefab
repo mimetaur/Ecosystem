@@ -133,7 +133,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.21
+  m_Volume: 0.301
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -216,6 +216,8 @@ MonoBehaviour:
   volumeRange:
     min: 0.5
     max: 0.75
+  varyPitch: 1
+  pitchWaver: 0.017
   fxSource: {fileID: 82355051347302504}
   musicSource: {fileID: 82954769572323518}
   musicLoop: {fileID: 8300000, guid: 7a01ce98bf7ae41d09234440cf327894, type: 3}
