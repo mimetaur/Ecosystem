@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class SpawnWithinBounds : MonoBehaviour
+public class SpawnCreaturesWithinBounds : MonoBehaviour
 {
 
     [Range(0, 20)]
     public int maxCreatures;
+
+    [Range(0, 20)]
+    public int initialCreatures;
+
     public GameObject creaturePrefab;
     public GameObject area;
     public float initialDelay;
@@ -19,7 +23,12 @@ public class SpawnWithinBounds : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        bounds = area.GetComponent<BoxCollider2D>().bounds;
+        bounds = area.GetComponent<Collider2D>().bounds;
+
+        for (numCreatures = 0; numCreatures < initialCreatures; numCreatures++) {
+            SpawnNewCreature();
+        }
+
         InvokeRepeating("SpawnNewCreature", initialDelay, rate);
     }
 

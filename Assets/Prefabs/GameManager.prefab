@@ -19,14 +19,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4819249107294810}
+  - component: {fileID: 114186600219628834}
   - component: {fileID: 114929899072737510}
   - component: {fileID: 114574456436039610}
-  - component: {fileID: 114813074860923190}
-  - component: {fileID: 114227339956712320}
-  - component: {fileID: 114060960259538426}
   - component: {fileID: 114210086472766124}
   - component: {fileID: 114340725339108030}
-  - component: {fileID: 114186600219628834}
+  - component: {fileID: 114152819155898178}
+  - component: {fileID: 114098578807744254}
+  - component: {fileID: 114527669936307742}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,7 +47,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114060960259538426
+--- !u!114 &114098578807744254
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -55,12 +55,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1300925161611524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4511f2fcbde3c458ba3b9de5de5611bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4417ce6443a4049ba8c587437814acf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numCreatures: 16
+  maxCreatures: 12
+  initialCreatures: 4
   creaturePrefab: {fileID: 1621018232485774, guid: fb3c6ab495fea4110972d28ef3a9cf94,
     type: 2}
+  area: {fileID: 0}
+  initialDelay: 2
+  rate: 10
+--- !u!114 &114152819155898178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300925161611524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4417ce6443a4049ba8c587437814acf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCreatures: 12
+  initialCreatures: 4
+  creaturePrefab: {fileID: 1501051070512082, guid: cde6c06ed66ea493ca0b80116ae90b6d,
+    type: 2}
+  area: {fileID: 0}
+  initialDelay: 2
+  rate: 10
 --- !u!114 &114186600219628834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3ea8c58308e40899f9d2257ee2f512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 0}
+  world: {fileID: 114210086472766124}
 --- !u!114 &114210086472766124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,20 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 0}
   obstacles: {fileID: 0}
---- !u!114 &114227339956712320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300925161611524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4511f2fcbde3c458ba3b9de5de5611bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numCreatures: 12
-  creaturePrefab: {fileID: 1501051070512082, guid: cde6c06ed66ea493ca0b80116ae90b6d,
-    type: 2}
 --- !u!114 &114340725339108030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,15 +116,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1300925161611524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e082528b60ab344bc96743387e5c1bfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4417ce6443a4049ba8c587437814acf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxCreatures: 4
+  initialCreatures: 2
   creaturePrefab: {fileID: 1498878960245882, guid: ce3afccb2a07642e2a5e21ebe5238b5d,
     type: 2}
   area: {fileID: 0}
   initialDelay: 3
   rate: 20
+--- !u!114 &114527669936307742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300925161611524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d5f87de61c14a9d8d0517a2a3af198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickup: {fileID: 1609762140816690, guid: 0dc5b46b26cb4478899ea49fff9e3ad8, type: 2}
+  initialPickups: 12
+  maxPickups: 36
+  initialDelay: 10
+  rate: 8
 --- !u!114 &114574456436039610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,24 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ef0592f8b7d4e159bf1653d10dd4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnArea: {fileID: 0}
+  area: {fileID: 0}
   roller: {fileID: 1018360337711306, guid: a77244bba0d934ec5bbcceda04d9b3d4, type: 2}
   numRollers: 18
   initialDelay: 0
   rate: 30.24
---- !u!114 &114813074860923190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300925161611524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e581644710b24b77a28c0cac4814ebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numMushrooms: 58
-  mushroom: {fileID: 4770892967578664, guid: 0dc5b46b26cb4478899ea49fff9e3ad8, type: 2}
 --- !u!114 &114929899072737510
 MonoBehaviour:
   m_ObjectHideFlags: 1

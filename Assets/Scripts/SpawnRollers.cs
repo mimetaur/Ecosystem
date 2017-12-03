@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SpawnRollers : MonoBehaviour {
 
-
-    public GameObject spawnArea;
+    public GameObject area;
     public GameObject roller;
 
     [Range(0, 40)]
@@ -17,17 +16,17 @@ public class SpawnRollers : MonoBehaviour {
     [Range(5, 80)]
     public float rate;
 
-    private BoxCollider2D spawnCollider;
+    private Bounds bounds;
 
 
 	// Use this for initialization
 	void Start () {
-        spawnCollider = spawnArea.GetComponent<BoxCollider2D>();
+        bounds = area.GetComponent<Collider2D>().bounds;
+
         InvokeRepeating("SpawnNewRollers", initialDelay, rate);
 	}
 
     void SpawnNewRollers() {
-        var bounds = spawnCollider.bounds;
         for (int i = 0; i < numRollers; i++)
         {
             Vector2 spawnPoint = bounds.GetRandomPoint();

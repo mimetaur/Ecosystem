@@ -81,6 +81,4 @@ public class GameWorld : MonoBehaviour
     {
         return groundTilemap.GetCellCenterWorld(GetRandomUnblockedCell());
     }
-
-
 }
