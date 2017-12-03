@@ -11,6 +11,10 @@ public class Pan : MonoBehaviour
 
     public int edgePadding = 10;
 
+    public float distanceOffscreen = -200.0f;
+
+    public float panInTime = 20.0f;
+
     private GameWorld world;
 
     private Vector3 targetPosition;
@@ -21,9 +25,14 @@ public class Pan : MonoBehaviour
 
     void Start()
     {
+        
         world = GameManager.instance.world;
         zOffset = transform.position.z;
-        InvokeRepeating("SetRandomTarget", 0.0f, panRate);
+
+        // start "offstage"
+        transform.position = new Vector3(distanceOffscreen, 0.0f, zOffset);
+
+        InvokeRepeating("SetRandomTarget", panInTime, panRate);
     }
 
     private void SetRandomTarget()

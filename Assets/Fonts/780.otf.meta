@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 5d8228d96cccb464483c727d3aa39c4a
+timeCreated: 1512336093
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hydrophilia Iced
+  fontNames:
+  - Hydrophilia Iced
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
