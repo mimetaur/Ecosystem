@@ -32,7 +32,12 @@ public class Prey : MonoBehaviour
         }
         else
         {
-            machine.currentState = AIStateMachine.State.Wander;
+            if (this.gameObject.tag == "Player") {
+                machine.currentState = AIStateMachine.State.Seek;
+            } else {
+                machine.currentState = AIStateMachine.State.Wander;    
+            }
+
         }
     }
 

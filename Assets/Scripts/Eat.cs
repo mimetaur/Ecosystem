@@ -31,7 +31,7 @@ public class Eat : MonoBehaviour
 
     private void CheckEating(GameObject other)
     {
-        if (other.tag == tagName)
+        if (other.tag == tagName || (this.gameObject.tag == "Enemy" && other.tag == "Player"))
         {
             EatOther(other);
         }
@@ -40,6 +40,7 @@ public class Eat : MonoBehaviour
 
     private void EatOther(GameObject other)
     {
+        if (other == null) return;
         //string debug = string.Format("{0} ate {1} at {2}", name, other.name, other.transform.position.AsVector2());
         //print(debug);
 

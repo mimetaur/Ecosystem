@@ -30,4 +30,13 @@ public class GameManager : MonoBehaviour
     private void InitializeGame() {
         world.Initialize();
     }
+
+    public void RespawnGem() {
+        GameObject gem = (GameObject)Instantiate(Resources.Load("Gem")) as GameObject;
+        gem.transform.position = world.GetRandomUnblockedLocation();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<Quest>().goal = gem;
+        player.GetComponent<AIStateMachine>().currentState = AIStateMachine.State.Seek;
+    }
 }

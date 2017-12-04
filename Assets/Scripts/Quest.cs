@@ -11,9 +11,16 @@ public class Quest : MonoBehaviour
     private AIStateMachine machine;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         machine = GetComponent<AIStateMachine>();
+        goal = GameObject.FindGameObjectWithTag("QuestGoal");
+
+        if (goal != null)
+        {
+            targetPosition = goal.transform.position.AsVector2();
+            machine.currentState = AIStateMachine.State.Seek;
+        }
     }
 
     // Update is called once per frame
@@ -32,5 +39,16 @@ public class Quest : MonoBehaviour
     public Vector2 TargetPosition()
     {
         return targetPosition;
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "QuestGoal")
+        {
+            goal.transform.position = GameManager.instance.world.GetRandomUnblockedLocation();
+            machine.currentState = AIStateMachine.State.Seek;
+        }
     }
 }

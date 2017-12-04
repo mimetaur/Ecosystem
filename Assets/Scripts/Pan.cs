@@ -13,7 +13,7 @@ public class Pan : MonoBehaviour
 
     public float distanceOffscreen = -200.0f;
 
-    public GameObject targetObject;
+    private GameObject targetObject;
 
     private GameWorld world;
 
@@ -35,7 +35,7 @@ public class Pan : MonoBehaviour
         // start "offstage"
         transform.position = new Vector3(distanceOffscreen, 0.0f, zOffset);
 
-        targetObject = GameObject.Find("Priest");
+        targetObject = GameObject.FindGameObjectWithTag("Player");
 
         InvokeRepeating("SetTarget", 1.0f, panRate);
     }
@@ -52,6 +52,9 @@ public class Pan : MonoBehaviour
         else
         {
             targetPosition = world.GetPaddedRandomLocation(edgePadding);
+
+            targetObject = GameObject.FindGameObjectWithTag("Player");
+            Invoke("SetTarget", 5.0f);
         }
 
 

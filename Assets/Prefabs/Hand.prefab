@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea0595a23d334d9b8d8edfe43e7f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagName: Player
+  tagName: Creature
 --- !u!114 &114922384219071306
 MonoBehaviour:
   m_ObjectHideFlags: 1

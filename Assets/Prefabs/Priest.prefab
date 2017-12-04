@@ -31,7 +31,6 @@ GameObject:
   - component: {fileID: 114627089086197152}
   - component: {fileID: 114522668897659022}
   - component: {fileID: 114968240649926318}
-  - component: {fileID: 114814803768640934}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Player
@@ -226,18 +225,6 @@ MonoBehaviour:
   volumeRange:
     min: 0.25
     max: 0.75
---- !u!114 &114814803768640934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1424382132772352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 749110f574ced4d9d80c098b4fcddc7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnArea: {fileID: 0}
 --- !u!114 &114968240649926318
 MonoBehaviour:
   m_ObjectHideFlags: 1

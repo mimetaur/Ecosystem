@@ -9,6 +9,7 @@ TagManager:
   - Mushroom
   - Enemy
   - QuestGoal
+  - Creature
   layers:
   - Default
   - TransparentFX
