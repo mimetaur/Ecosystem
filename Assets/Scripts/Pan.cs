@@ -15,7 +15,7 @@ public class Pan : MonoBehaviour
 
     private GameObject targetObject;
 
-    private GameWorld world;
+    //private GameWorld world;
 
     private Vector3 targetPosition;
 
@@ -29,7 +29,7 @@ public class Pan : MonoBehaviour
     {
         //targetBounds = targetObject.GetComponent<Collider2D>().bounds;
 
-        world = GameManager.instance.world;
+        //world = GameManager.instance.world;
         zOffset = transform.position.z;
 
         // start "offstage"
