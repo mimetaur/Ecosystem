@@ -18,6 +18,7 @@ public class QuestMovement : MonoBehaviour
         machine = GetComponent<AIStateMachine>();
         quest = GetComponent<Quest>();
 
+        machine.currentState = AIStateMachine.State.Seek;
         ai.destination = Seek();
     }
 
