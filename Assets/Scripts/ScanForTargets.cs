@@ -12,12 +12,12 @@ public class ScanForTargets : MonoBehaviour
 
     private AIStateMachine machine;
 
-    private TargetTag targets;
+    private string tagName;
 
     private void Start()
     {
         machine = GetComponent<AIStateMachine>();
-        targets = GetComponent<TargetTag>();
+        tagName = GetComponent<TargetTag>().tagName;
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class ScanForTargets : MonoBehaviour
         machine.currentState = AIStateMachine.State.Wander;
         
 
-        var target = GameUtils.FindClosestWithinThreshold(this.gameObject, targets.AllTargets(), threshold);
+        var target = GameUtils.FindClosestWithinThreshold(this.gameObject, GameObject.FindGameObjectsWithTag(tagName), threshold);
         if (target != null)
         {
             // seek only if a target is within the threshold    

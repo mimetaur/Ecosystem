@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(TargetTag))]
 public class Eat : MonoBehaviour
 {
-    private string[] tagNames;
+    private string tagName;
     private AIStateMachine machine;
     private EatSounds eatSounds;
     private WillStarve willStarve;
@@ -14,10 +14,7 @@ public class Eat : MonoBehaviour
     private void Start()
     {
         machine = GetComponent<AIStateMachine>();
-        tagNames = GetComponent<TargetTag>().tagNames;
-        for (int i = 0; i < tagNames.Length; i++) {
-            print(tagNames[i]);
-        }
+        tagName = GetComponent<TargetTag>().tagName;
         eatSounds = GetComponent<EatSounds>();
         willStarve = GetComponent<WillStarve>();
     }
@@ -34,14 +31,11 @@ public class Eat : MonoBehaviour
 
     private void CheckEating(GameObject other)
     {
-        for (int i = 0; i < tagNames.Length; i++)
+        if (other.tag == tagName)
         {
-            if (other.tag == tagNames[i])
-            {
-                EatOther(other);
-            }
-
+            EatOther(other);
         }
+
     }
 
     private void EatOther(GameObject other)
