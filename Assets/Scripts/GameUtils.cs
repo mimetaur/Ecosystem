@@ -38,6 +38,7 @@ public static class GameUtils
     // https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
     public static GameObject FindClosest(Vector3 position, GameObject[] things)
     {
+        if (things == null) return null;
         GameObject closestThing = null;
         float distance = Mathf.Infinity;
 
@@ -56,6 +57,7 @@ public static class GameUtils
 
     public static GameObject FindClosestWithinThreshold(GameObject seeker, GameObject[] targets, float threshold)
     {
+        if (targets == null) return null;
         GameObject result = null;
         var seekerPos = seeker.transform.position;
         var closestTarget = GameUtils.FindClosest(seekerPos, targets);

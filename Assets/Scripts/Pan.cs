@@ -51,9 +51,8 @@ public class Pan : MonoBehaviour
         }
         else
         {
-            targetPosition = world.GetPaddedRandomLocation(edgePadding);
-
             targetObject = GameObject.FindGameObjectWithTag("Player");
+            targetPosition = targetObject.transform.position;
             Invoke("SetTarget", 5.0f);
         }
 

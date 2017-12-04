@@ -22,7 +22,7 @@ public class SpawnPriest : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Player").Length < 1)
         {
-            Invoke("SpawnNewPriest", 5.0f);
+            Invoke("SpawnNewPriest", 2.0f);
         }
     }
 
