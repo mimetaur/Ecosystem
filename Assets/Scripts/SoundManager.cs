@@ -60,7 +60,6 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(AudioClip clip, float volume, float pan = 0.0f)
     {
         fxSource.panStereo = pan;
-        print("Played sound " + clip.name);
         if (varyPitch) fxSource.pitch = 1.0f + Random.Range(-pitchWaver, pitchWaver);
         fxSource.PlayOneShot(clip, volume);
     }
@@ -75,7 +74,6 @@ public class SoundManager : MonoBehaviour
     {
         int randomIdx = Random.Range(0, clips.Length);
         var clip = clips[randomIdx];
-        print("Played sound " + clip.name);
 
         fxSource.panStereo = pan;
         if (varyPitch) fxSource.pitch = 1.0f + Random.Range(-pitchWaver, pitchWaver);

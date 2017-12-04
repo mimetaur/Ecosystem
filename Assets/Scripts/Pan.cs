@@ -35,6 +35,8 @@ public class Pan : MonoBehaviour
         // start "offstage"
         transform.position = new Vector3(distanceOffscreen, 0.0f, zOffset);
 
+        targetObject = GameObject.Find("Priest");
+
         InvokeRepeating("SetTarget", 1.0f, panRate);
     }
 

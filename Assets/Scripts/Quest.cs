@@ -14,6 +14,7 @@ public class Quest : MonoBehaviour
     void Start()
     {
         machine = GetComponent<AIStateMachine>();
+        goal = GameObject.Find("Gem");
     }
 
     // Update is called once per frame

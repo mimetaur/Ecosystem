@@ -5,16 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(TargetTag))]
 public class Eat : MonoBehaviour
 {
-    private string tagName;
+    private string[] tagNames;
     private AIStateMachine machine;
     private EatSounds eatSounds;
     private WillStarve willStarve;
 
+
     private void Start()
     {
         machine = GetComponent<AIStateMachine>();
-        var targetTag = GetComponent<TargetTag>();
-        tagName = targetTag.tagName;
+        tagNames = GetComponent<TargetTag>().tagNames;
+        for (int i = 0; i < tagNames.Length; i++) {
+            print(tagNames[i]);
+        }
         eatSounds = GetComponent<EatSounds>();
         willStarve = GetComponent<WillStarve>();
     }
@@ -29,12 +32,20 @@ public class Eat : MonoBehaviour
         CheckEating(collider.gameObject);
     }
 
-    private void CheckEating(GameObject other) {
-        if (other.tag == tagName)
-            EatOther(other);
+    private void CheckEating(GameObject other)
+    {
+        for (int i = 0; i < tagNames.Length; i++)
+        {
+            if (other.tag == tagNames[i])
+            {
+                EatOther(other);
+            }
+
+        }
     }
 
-    private void EatOther(GameObject other) {
+    private void EatOther(GameObject other)
+    {
         //string debug = string.Format("{0} ate {1} at {2}", name, other.name, other.transform.position.AsVector2());
         //print(debug);
 

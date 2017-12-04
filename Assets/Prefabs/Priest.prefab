@@ -123,8 +123,8 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  speed: 3
-  enableRotation: 1
+  speed: 1.25
+  enableRotation: 0
   rotationIn2D: 0
   rotationSpeed: 10
   interpolatePathSwitches: 1
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8eedd472b3354d48ac36bb2d0b1b1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderRadius: 40
 --- !u!114 &114523775083356446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   predatorTag: Enemy
-  threshold: 6
+  threshold: 12
 --- !u!114 &114581961785699598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ca8f0461269403ab7370bd1315ad56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goal: {fileID: 0}
 --- !u!212 &212925147809342588
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -268,7 +270,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -948179579
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: adf832ab3f95b4044a110f9a62bebb3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

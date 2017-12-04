@@ -8,7 +8,7 @@ public class Steer : MonoBehaviour
 
     public float maxSeeAhead = 10.0f;
 
-    private GameObject destination;
+    public GameObject destination;
     private Vector2 target;
 
     private Rigidbody2D rb2d;
