@@ -27,7 +27,6 @@ public class SpawnRollers : MonoBehaviour
 
     void SpawnNewRollers()
     {
-        print("Spawning new rollers");
         var bounds = spawnCollider.bounds;
         for (int i = 0; i < numRollers; i++)
         {

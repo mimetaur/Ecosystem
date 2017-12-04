@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - Mushroom
   - Enemy
+  - QuestGoal
   layers:
   - Default
   - TransparentFX

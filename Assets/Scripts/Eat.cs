@@ -35,8 +35,8 @@ public class Eat : MonoBehaviour
     }
 
     private void EatOther(GameObject other) {
-        string debug = string.Format("{0} ate {1} at {2}", name, other.name, other.transform.position.AsVector2());
-        print(debug);
+        //string debug = string.Format("{0} ate {1} at {2}", name, other.name, other.transform.position.AsVector2());
+        //print(debug);
 
         if (eatSounds != null) eatSounds.Play();
         if (willStarve != null) willStarve.DidEat();

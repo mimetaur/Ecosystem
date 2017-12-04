@@ -13,7 +13,7 @@ public class Pan : MonoBehaviour
 
     public float distanceOffscreen = -200.0f;
 
-    public float panInTime = 20.0f;
+    public GameObject targetObject;
 
     private GameWorld world;
 
@@ -23,21 +23,35 @@ public class Pan : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
+    //private Bounds targetBounds;
+
     void Start()
     {
-        
+        //targetBounds = targetObject.GetComponent<Collider2D>().bounds;
+
         world = GameManager.instance.world;
         zOffset = transform.position.z;
 
         // start "offstage"
         transform.position = new Vector3(distanceOffscreen, 0.0f, zOffset);
 
-        InvokeRepeating("SetRandomTarget", panInTime, panRate);
+        InvokeRepeating("SetTarget", 1.0f, panRate);
     }
 
-    private void SetRandomTarget()
+    private void SetTarget()
     {
-        targetPosition = world.GetPaddedRandomLocation(edgePadding);
+        // if there's a target, follow it
+        // if the target is gone, revert to random panning
+
+        if (targetObject != null)
+        {
+            targetPosition = targetObject.transform.position;
+        }
+        else
+        {
+            targetPosition = world.GetPaddedRandomLocation(edgePadding);
+        }
+
 
     }
 
