@@ -32,16 +32,6 @@ public class GameManager : MonoBehaviour
         world.Initialize();
     }
 
-    public void RespawnGem()
-    {
-        GameObject gem = (GameObject)Instantiate(Resources.Load("Gem")) as GameObject;
-        gem.transform.position = world.GetRandomUnblockedLocation();
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<Quest>().goal = gem;
-        player.GetComponent<AIStateMachine>().currentState = AIStateMachine.State.Seek;
-    }
-
     public void RespawnPlayer()
     {
         SpawnPriest spawnPriest = GetComponent<SpawnPriest>();

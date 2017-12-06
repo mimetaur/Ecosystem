@@ -6,21 +6,19 @@ public class Quest : MonoBehaviour
 {
     public GameObject goal;
 
+    public float searchRadius;
+
     private Vector2 targetPosition;
 
     private AIStateMachine machine;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         machine = GetComponent<AIStateMachine>();
-        goal = GameObject.FindGameObjectWithTag("QuestGoal");
 
-        if (goal != null)
-        {
-            targetPosition = goal.transform.position.AsVector2();
-            machine.currentState = AIStateMachine.State.Seek;
-        }
+        var gems = GameObject.FindGameObjectsWithTag(goal.tag);
+        Search(gems);
     }
 
     // Update is called once per frame
@@ -28,10 +26,27 @@ public class Quest : MonoBehaviour
     {
         if (machine.currentState == AIStateMachine.State.Flee) return;
 
-        if (goal != null) {
-            targetPosition = goal.transform.position.AsVector2();
-            machine.currentState = AIStateMachine.State.Seek;
-        } else {
+        var gems = GameObject.FindGameObjectsWithTag(goal.tag);
+        Search(gems);
+    }
+
+    private void Search(GameObject[] targets)
+    {
+        if (targets != null)
+        {
+            var target = GameUtils.FindClosestWithinThreshold(this.gameObject, targets, searchRadius);
+            if (target != null)
+            {
+                targetPosition = target.transform.position.AsVector2();
+                machine.currentState = AIStateMachine.State.Seek;
+            }
+            else
+            {
+                machine.currentState = AIStateMachine.State.Wander;
+            }
+        }
+        else
+        {
             machine.currentState = AIStateMachine.State.Wander;
         }
     }
@@ -40,8 +55,6 @@ public class Quest : MonoBehaviour
     {
         return targetPosition;
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {

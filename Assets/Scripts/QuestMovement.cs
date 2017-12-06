@@ -5,12 +5,11 @@ using Pathfinding;
 
 public class QuestMovement : MonoBehaviour
 {
-
     public float wanderRadius;
 
-    IAstarAI ai;
-    AIStateMachine machine;
-    Quest quest;
+    private IAstarAI ai;
+    private AIStateMachine machine;
+    private Quest quest;
 
     private void Start()
     {
@@ -18,8 +17,7 @@ public class QuestMovement : MonoBehaviour
         machine = GetComponent<AIStateMachine>();
         quest = GetComponent<Quest>();
 
-        machine.currentState = AIStateMachine.State.Seek;
-        ai.destination = Seek();
+        machine.currentState = AIStateMachine.State.Wander;
     }
 
     private void Update()
@@ -47,7 +45,6 @@ public class QuestMovement : MonoBehaviour
                 ai.SearchPath();
             }
         }
-
     }
 
     private Vector2 Seek()

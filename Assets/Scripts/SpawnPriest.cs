@@ -11,7 +11,7 @@ public class SpawnPriest : MonoBehaviour
     private Bounds bounds;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         bounds = spawnArea.GetComponent<Collider2D>().bounds;
 

@@ -236,7 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ca8f0461269403ab7370bd1315ad56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 0}
+  goal: {fileID: 1616131144236032, guid: f2d0e37e678754ed08e1004bb9011caa, type: 2}
+  searchRadius: 120
 --- !u!212 &212925147809342588
 SpriteRenderer:
   m_ObjectHideFlags: 1
