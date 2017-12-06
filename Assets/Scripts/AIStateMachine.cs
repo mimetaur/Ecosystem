@@ -5,7 +5,7 @@ using UnityEngine;
 public class AIStateMachine : MonoBehaviour
 {
 
-    public enum State { Idle, Wander, Seek, Flee, ReturnHomeWithGem }
+    public enum State { Idle, Wander, Seek, Flee }
     public State currentState;
 
     private void Start()

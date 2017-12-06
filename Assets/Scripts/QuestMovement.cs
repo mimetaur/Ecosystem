@@ -6,23 +6,23 @@ using Pathfinding;
 public class QuestMovement : MonoBehaviour
 {
     private IAstarAI ai;
-    private AIStateMachine machine;
+    private QuestAIStateMachine machine;
     private Quest quest;
 
     private void Start()
     {
         ai = GetComponent<IAstarAI>();
-        machine = GetComponent<AIStateMachine>();
+        machine = GetComponent<QuestAIStateMachine>();
         quest = GetComponent<Quest>();
     }
 
     private void Update()
     {
-        if (machine.currentState == AIStateMachine.State.Flee)
+        if (machine.CurrentState == QuestAIStateMachine.State.Flee)
         {
             return;
         }
-        else if (machine.currentState == AIStateMachine.State.Wander)
+        else if (machine.CurrentState == QuestAIStateMachine.State.Wander)
         {
             Wander();
         }
@@ -39,7 +39,7 @@ public class QuestMovement : MonoBehaviour
         // once you've reached the old one
         if (isLookingForNewPath())
         {
-            ai.destination = quest.TargetPosition();
+            ai.destination = quest.TargetPosition;
             ai.SearchPath();
         }
     }
@@ -47,11 +47,11 @@ public class QuestMovement : MonoBehaviour
     private void Seek()
     {
         // look for a new destination each frame
-        ai.destination = quest.TargetPosition();
+        ai.destination = quest.TargetPosition;
 
         if (isLookingForNewPath())
         {
-            ai.destination = quest.TargetPosition();
+            ai.destination = quest.TargetPosition;
             ai.SearchPath();
         }
     }

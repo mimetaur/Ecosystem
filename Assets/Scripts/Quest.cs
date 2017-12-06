@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Quest : MonoBehaviour
 {
-    public GameObject goal;
+    public GameObject goalType;
     public float searchRadius;
     public float wanderRadius;
 
-
     private Vector2 targetPosition;
-    private AIStateMachine machine;
+    private QuestAIStateMachine machine;
     private GameObject gemMode;
     private Vector2 homePosition;
+    private GameObject target;
 
     // Use this for initialization
     void Start()
     {
-        machine = GetComponent<AIStateMachine>();
+        machine = GetComponent<QuestAIStateMachine>();
 
         gemMode = (GameObject)Instantiate(Resources.Load("Gem"));
         gemMode.transform.parent = this.transform;
@@ -30,75 +30,85 @@ public class Quest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // print("Current player state: " + machine.currentState);
+        print("Current player state: " + machine.CurrentState);
+
         gemMode.SetActive(false);
 
-        if (machine.currentState == AIStateMachine.State.Flee)
+        if (machine.CurrentState == QuestAIStateMachine.State.Flee)
         {
             return;
         }
-        else if (machine.currentState == AIStateMachine.State.ReturnHomeWithGem)
+        else if (machine.CurrentState == QuestAIStateMachine.State.ReturnHomeWithGem)
         {
             gemMode.SetActive(true);
             gemMode.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             targetPosition = homePosition;
         }
-        else if (machine.currentState == AIStateMachine.State.Seek)
-        {
-            var gems = GameObject.FindGameObjectsWithTag(goal.tag);
-            Search(gems);
-        }
         else
         {
-            targetPosition = GetRandomPoint();
+            SearchForQuestItems();
         }
     }
 
-    private void Search(GameObject[] targets)
+    private void SearchForQuestItems()
     {
-        if (machine.currentState != AIStateMachine.State.Seek) return;
+        var gems = GameObject.FindGameObjectsWithTag(goalType.tag);
+        target = SeekNearbyItems(gems);
+        if (target != null)
+        {
+            targetPosition = target.transform.position.AsVector2();
+            machine.CurrentState = QuestAIStateMachine.State.Seek;
+        }
+        else
+        {
+            machine.CurrentState = QuestAIStateMachine.State.Wander;
+        }
+    }
+
+    private GameObject SeekNearbyItems(GameObject[] targets)
+    {
+        GameObject searchResult = null;
 
         if (targets != null)
         {
             var target = GameUtils.FindClosestWithinThreshold(this.gameObject, targets, searchRadius);
             if (target != null)
             {
-                targetPosition = target.transform.position.AsVector2();
-                machine.currentState = AIStateMachine.State.Seek;
-            }
-            else
-            {
-                machine.currentState = AIStateMachine.State.Wander;
+                searchResult = target;
             }
         }
-        else
-        {
-            machine.currentState = AIStateMachine.State.Wander;
-        }
+
+        return searchResult;
     }
 
-    public Vector2 TargetPosition()
+    public Vector2 TargetPosition
     {
-        return targetPosition;
+        get
+        {
+            // default is to wander
+            var pos = RandomPointInRadius();
+            if (machine.CurrentState == QuestAIStateMachine.State.ReturnHomeWithGem)
+            {
+                pos = homePosition;
+            }
+            else if (machine.CurrentState == QuestAIStateMachine.State.Seek)
+            {
+                pos = target.transform.position.AsVector2();
+            }
+            return pos;
+        }
     }
 
-    private Vector2 GetRandomPoint()
+    private Vector2 RandomPointInRadius()
     {
         var point = Random.insideUnitCircle * wanderRadius;
         point += transform.position.AsVector2();
         return point;
     }
-    public Vector2 HomePosition()
-    {
-        return homePosition;
-    }
 
     private void ReturnHome()
     {
-        print(machine.currentState);
-        machine.currentState = AIStateMachine.State.ReturnHomeWithGem;
-        targetPosition = homePosition;
-        print("Returning home - " + machine.currentState + " " + homePosition);
+
     }
 
     public void OnTriggerEnter2D(Collider2D collider)
@@ -110,10 +120,10 @@ public class Quest : MonoBehaviour
     {
         if (other != null && other.tag == "QuestGoal")
         {
-            print("Got Quest Goal");
-            ReturnHome();
-
+            machine.CurrentState = QuestAIStateMachine.State.ReturnHomeWithGem;
             Destroy(other);
+            print("Got Quest Goal");
+            print("Returning home - " + machine.CurrentState + " " + homePosition);
         }
     }
 }
