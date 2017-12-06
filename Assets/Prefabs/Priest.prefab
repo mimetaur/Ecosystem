@@ -120,8 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalType: {fileID: 1616131144236032, guid: f2d0e37e678754ed08e1004bb9011caa, type: 2}
-  searchRadius: 100
+  searchRadius: 120
   wanderRadius: 12
+  timeBetweenMissions: 5
 --- !u!114 &114109166657267460
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Quest : MonoBehaviour
 {
     public GameObject goalType;
     public float searchRadius;
     public float wanderRadius;
+    public float timeBetweenMissions = 8.0f;
 
     private QuestAIStateMachine machine;
     private GameObject gemMode;
+    private SpriteRenderer gemModeSr;
+
+    private Bounds homeBounds;
     private Vector2 homePosition;
     private GameObject target;
 
@@ -22,7 +27,7 @@ public class Quest : MonoBehaviour
         gemMode.transform.parent = this.transform;
         gemMode.SetActive(false);
 
-        var homeBounds = GameObject.Find("Priest Spawn").GetComponent<Collider2D>().bounds;
+        homeBounds = GameObject.Find("Priest Spawn").GetComponent<Collider2D>().bounds;
         homePosition = homeBounds.center.AsVector2();
     }
 
@@ -30,8 +35,6 @@ public class Quest : MonoBehaviour
     void Update()
     {
         print("Current player state: " + machine.CurrentState);
-
-        gemMode.SetActive(false);
 
         if (machine.CurrentState == QuestAIStateMachine.State.Evade)
         {
@@ -41,11 +44,34 @@ public class Quest : MonoBehaviour
         {
             gemMode.SetActive(true);
             gemMode.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+
+            print(homeBounds.Contains(transform.position));
+            if (homeBounds.Contains(transform.position.AsVector2()))
+            {
+                print("Player is back inside house");
+                machine.CurrentState = QuestAIStateMachine.State.Idle;
+                // gemModeSr.DOFade(0, timeBetweenMissions).OnComplete(WaitToSeek);
+                gemMode.transform.DOScale(0, timeBetweenMissions).OnComplete(WaitToSeek);
+
+                // Invoke("WaitToSeek", timeBetweenMissions);
+            }
         }
-        else
+        else if (machine.CurrentState == QuestAIStateMachine.State.Seek || machine.CurrentState == QuestAIStateMachine.State.Wander)
         {
             SearchForQuestItems();
         }
+        else if (machine.CurrentState == QuestAIStateMachine.State.Idle)
+        {
+            // do nothing
+        }
+    }
+
+    private void WaitToSeek()
+    {
+        print("Leaving the house!");
+        machine.CurrentState = QuestAIStateMachine.State.Wander;
+        gemMode.transform.localScale = new Vector3(0.75f, 0.75f, 1.0f);
+        gemMode.SetActive(false);
     }
 
     private void SearchForQuestItems()

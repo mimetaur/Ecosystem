@@ -26,6 +26,10 @@ public class QuestMovement : MonoBehaviour
         {
             Wander();
         }
+        else if (machine.CurrentState == QuestAIStateMachine.State.Idle)
+        {
+            // Do nothing because assuming we are at home
+        }
         else
         {
             // can either seek home or seek gems
