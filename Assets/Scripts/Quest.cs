@@ -5,33 +5,59 @@ using UnityEngine;
 public class Quest : MonoBehaviour
 {
     public GameObject goal;
-
     public float searchRadius;
+    public float wanderRadius;
+
 
     private Vector2 targetPosition;
-
     private AIStateMachine machine;
+    private GameObject gemMode;
+    private Vector2 homePosition;
 
     // Use this for initialization
     void Start()
     {
         machine = GetComponent<AIStateMachine>();
 
-        var gems = GameObject.FindGameObjectsWithTag(goal.tag);
-        Search(gems);
+        gemMode = (GameObject)Instantiate(Resources.Load("Gem"));
+        gemMode.transform.parent = this.transform;
+        gemMode.SetActive(false);
+
+        var homeBounds = GameObject.Find("Priest Spawn").GetComponent<Collider2D>().bounds;
+        homePosition = homeBounds.center.AsVector2();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (machine.currentState == AIStateMachine.State.Flee) return;
+        // print("Current player state: " + machine.currentState);
+        gemMode.SetActive(false);
 
-        var gems = GameObject.FindGameObjectsWithTag(goal.tag);
-        Search(gems);
+        if (machine.currentState == AIStateMachine.State.Flee)
+        {
+            return;
+        }
+        else if (machine.currentState == AIStateMachine.State.ReturnHomeWithGem)
+        {
+            gemMode.SetActive(true);
+            gemMode.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            targetPosition = homePosition;
+        }
+        else if (machine.currentState == AIStateMachine.State.Seek)
+        {
+            var gems = GameObject.FindGameObjectsWithTag(goal.tag);
+            Search(gems);
+        }
+        else
+        {
+            targetPosition = GetRandomPoint();
+        }
     }
 
     private void Search(GameObject[] targets)
     {
+        if (machine.currentState != AIStateMachine.State.Seek) return;
+
         if (targets != null)
         {
             var target = GameUtils.FindClosestWithinThreshold(this.gameObject, targets, searchRadius);
@@ -56,12 +82,38 @@ public class Quest : MonoBehaviour
         return targetPosition;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private Vector2 GetRandomPoint()
     {
-        if (other.tag == "QuestGoal")
+        var point = Random.insideUnitCircle * wanderRadius;
+        point += transform.position.AsVector2();
+        return point;
+    }
+    public Vector2 HomePosition()
+    {
+        return homePosition;
+    }
+
+    private void ReturnHome()
+    {
+        print(machine.currentState);
+        machine.currentState = AIStateMachine.State.ReturnHomeWithGem;
+        targetPosition = homePosition;
+        print("Returning home - " + machine.currentState + " " + homePosition);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        CheckIfQuestGoal(collider.gameObject);
+    }
+
+    private void CheckIfQuestGoal(GameObject other)
+    {
+        if (other != null && other.tag == "QuestGoal")
         {
-            goal.transform.position = GameManager.instance.world.GetRandomUnblockedLocation();
-            machine.currentState = AIStateMachine.State.Seek;
+            print("Got Quest Goal");
+            ReturnHome();
+
+            Destroy(other);
         }
     }
 }

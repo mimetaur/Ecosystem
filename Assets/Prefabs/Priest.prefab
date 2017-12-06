@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114523775083356446}
   - component: {fileID: 114187391146092540}
   - component: {fileID: 114627089086197152}
-  - component: {fileID: 114522668897659022}
+  - component: {fileID: 114076156555153310}
   - component: {fileID: 114968240649926318}
   m_Layer: 0
   m_Name: Priest
@@ -108,6 +108,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: 1.25
+--- !u!114 &114076156555153310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424382132772352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8eedd472b3354d48ac36bb2d0b1b1db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114109166657267460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,18 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
---- !u!114 &114522668897659022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1424382132772352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8eedd472b3354d48ac36bb2d0b1b1db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 40
 --- !u!114 &114523775083356446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 1616131144236032, guid: f2d0e37e678754ed08e1004bb9011caa, type: 2}
   searchRadius: 120
+  wanderRadius: 12
 --- !u!212 &212925147809342588
 SpriteRenderer:
   m_ObjectHideFlags: 1

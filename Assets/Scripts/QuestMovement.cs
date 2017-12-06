@@ -5,8 +5,6 @@ using Pathfinding;
 
 public class QuestMovement : MonoBehaviour
 {
-    public float wanderRadius;
-
     private IAstarAI ai;
     private AIStateMachine machine;
     private Quest quest;
@@ -16,47 +14,50 @@ public class QuestMovement : MonoBehaviour
         ai = GetComponent<IAstarAI>();
         machine = GetComponent<AIStateMachine>();
         quest = GetComponent<Quest>();
-
-        machine.currentState = AIStateMachine.State.Wander;
     }
 
     private void Update()
     {
-        if (machine.currentState == AIStateMachine.State.Flee) return;
-
-        if (machine.currentState == AIStateMachine.State.Seek)
+        if (machine.currentState == AIStateMachine.State.Flee)
         {
-            ai.destination = Seek();
-            print("Moving toward quest object");
-
-            if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
-            {
-                ai.destination = Seek();
-                print("End of path");
-                ai.SearchPath();
-            }
+            return;
         }
         else if (machine.currentState == AIStateMachine.State.Wander)
         {
-            if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
-            {
-                print("End of path");
-                ai.destination = GetRandomPoint();
-                ai.SearchPath();
-            }
+            Wander();
+        }
+        else
+        {
+            // can either seek home or seek gems
+            Seek();
         }
     }
 
-    private Vector2 Seek()
+    private void Wander()
     {
-        return quest.TargetPosition();
+        // only look for a new destination 
+        // once you've reached the old one
+        if (isLookingForNewPath())
+        {
+            ai.destination = quest.TargetPosition();
+            ai.SearchPath();
+        }
     }
 
-    private Vector2 GetRandomPoint()
+    private void Seek()
     {
-        var point = Random.insideUnitCircle * wanderRadius;
-        point += transform.position.AsVector2();
-        return point;
+        // look for a new destination each frame
+        ai.destination = quest.TargetPosition();
+
+        if (isLookingForNewPath())
+        {
+            ai.destination = quest.TargetPosition();
+            ai.SearchPath();
+        }
     }
 
+    private bool isLookingForNewPath()
+    {
+        return !ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath);
+    }
 }
