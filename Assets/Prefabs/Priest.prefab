@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   predatorTag: Enemy
-  threshold: 12
+  threshold: 9
 --- !u!114 &114581961785699598
 MonoBehaviour:
   m_ObjectHideFlags: 1
