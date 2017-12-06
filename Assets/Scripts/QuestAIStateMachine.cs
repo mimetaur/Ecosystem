@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class QuestAIStateMachine : MonoBehaviour
 {
-    public enum State { Idle, Wander, Seek, Flee, ReturnHomeWithGem }
+    public enum State { Idle, Wander, Seek, Evade, ReturnHomeWithGem }
 
     private State currentState;
+    private State previousState;
 
 
     public State CurrentState
@@ -19,12 +20,19 @@ public class QuestAIStateMachine : MonoBehaviour
 
         set
         {
+            previousState = currentState;
             currentState = value;
         }
+    }
+
+    public void ReturnToPreviousState()
+    {
+        currentState = previousState;
     }
 
     private void Start()
     {
         currentState = State.Wander;
+        previousState = State.Wander;
     }
 }

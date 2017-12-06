@@ -18,7 +18,7 @@ public class QuestMovement : MonoBehaviour
 
     private void Update()
     {
-        if (machine.CurrentState == QuestAIStateMachine.State.Flee)
+        if (machine.CurrentState == QuestAIStateMachine.State.Evade)
         {
             return;
         }

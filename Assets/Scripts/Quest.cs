@@ -33,7 +33,7 @@ public class Quest : MonoBehaviour
 
         gemMode.SetActive(false);
 
-        if (machine.CurrentState == QuestAIStateMachine.State.Flee)
+        if (machine.CurrentState == QuestAIStateMachine.State.Evade)
         {
             return;
         }
