@@ -8,7 +8,6 @@ public class Quest : MonoBehaviour
     public float searchRadius;
     public float wanderRadius;
 
-    private Vector2 targetPosition;
     private QuestAIStateMachine machine;
     private GameObject gemMode;
     private Vector2 homePosition;
@@ -42,7 +41,6 @@ public class Quest : MonoBehaviour
         {
             gemMode.SetActive(true);
             gemMode.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-            targetPosition = homePosition;
         }
         else
         {
@@ -53,10 +51,9 @@ public class Quest : MonoBehaviour
     private void SearchForQuestItems()
     {
         var gems = GameObject.FindGameObjectsWithTag(goalType.tag);
-        target = SeekNearbyItems(gems);
+        target = SearchForNearbyItems(gems);
         if (target != null)
         {
-            targetPosition = target.transform.position.AsVector2();
             machine.CurrentState = QuestAIStateMachine.State.Seek;
         }
         else
@@ -65,7 +62,7 @@ public class Quest : MonoBehaviour
         }
     }
 
-    private GameObject SeekNearbyItems(GameObject[] targets)
+    private GameObject SearchForNearbyItems(GameObject[] targets)
     {
         GameObject searchResult = null;
 
@@ -104,11 +101,6 @@ public class Quest : MonoBehaviour
         var point = Random.insideUnitCircle * wanderRadius;
         point += transform.position.AsVector2();
         return point;
-    }
-
-    private void ReturnHome()
-    {
-
     }
 
     public void OnTriggerEnter2D(Collider2D collider)
