@@ -12,6 +12,7 @@ public class SpawnPickups : MonoBehaviour
     [Range(0, 100)]
     public int maxPickups;
 
+    public bool spawnRepeating = true;
     public float initialDelay;
     public float rate;
 
@@ -28,7 +29,7 @@ public class SpawnPickups : MonoBehaviour
             SpawnPickup();
         }
 
-        InvokeRepeating("SpawnPickup", initialDelay, rate);
+        if (spawnRepeating) InvokeRepeating("SpawnPickup", initialDelay, rate);
     }
 
     private void SpawnPickup()
