@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 50346914051582482}
   - component: {fileID: 61512196847219810}
   - component: {fileID: 114476333031923322}
-  - component: {fileID: 114004393903628042}
   - component: {fileID: 114725620680154218}
   - component: {fileID: 114806693090306346}
   - component: {fileID: 114475743954774444}
@@ -33,6 +32,7 @@ GameObject:
   - component: {fileID: 114922384219071306}
   - component: {fileID: 114250164313088820}
   - component: {fileID: 114348908128530844}
+  - component: {fileID: 114915113515643192}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Enemy
@@ -72,7 +72,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61512196847219810
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -98,28 +98,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3886878, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114004393903628042
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1498878960245882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  speed: 1.5
-  enableRotation: 0
-  rotationIn2D: 1
-  rotationSpeed: 10
-  interpolatePathSwitches: 1
-  switchPathInterpolationSpeed: 5
-  targetCompatibility: {fileID: 0}
 --- !u!114 &114250164313088820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +180,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967295
     useGraphRaycasting: 0
-  traversableTags: -1
+  traversableTags: -3
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &114671311301003232
 MonoBehaviour:
@@ -240,6 +218,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Creature
+--- !u!114 &114915113515643192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498878960245882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  repathRate: 0.5
+  canSearch: 1
+  canMove: 1
+  maxSpeed: 3
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffset: 1
+  rotationIn2D: 1
+  targetCompatibility: {fileID: 0}
+  rotationSpeed: 0
+  slowdownDistance: 0.6
+  pickNextWaypointDist: 2
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 0
+  whenCloseToDestination: 0
 --- !u!114 &114922384219071306
 MonoBehaviour:
   m_ObjectHideFlags: 1

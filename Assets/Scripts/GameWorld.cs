@@ -19,7 +19,9 @@ public class GameWorld : MonoBehaviour
     public void Initialize()
     {
         groundTilemap = ground.GetComponent<Tilemap>();
+        groundTilemap.CompressBounds();
         obstaclesTilemap = obstacles.GetComponent<Tilemap>();
+        obstaclesTilemap.CompressBounds();
 
         ScanTilemaps();
     }
@@ -51,7 +53,8 @@ public class GameWorld : MonoBehaviour
         return unblockedCells[i];
     }
 
-    private Vector3Int GetPaddedRandomCell(int padding) {
+    private Vector3Int GetPaddedRandomCell(int padding)
+    {
         var paddedCells = new List<Vector3Int>();
         var cellBounds = groundTilemap.cellBounds;
 
@@ -68,7 +71,8 @@ public class GameWorld : MonoBehaviour
         return paddedCells[i];
     }
 
-    public Vector2 GetPaddedRandomLocation(int padding) {
+    public Vector2 GetPaddedRandomLocation(int padding)
+    {
         return groundTilemap.GetCellCenterWorld(GetPaddedRandomCell(padding));
     }
 

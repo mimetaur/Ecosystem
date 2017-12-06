@@ -31,10 +31,6 @@ public class QuestEvadeManager : MonoBehaviour
             machine.CurrentState = QuestAIStateMachine.State.Evade;
             evasion.SetPredator(predator);
         }
-        else
-        {
-            machine.ReturnToPreviousState();
-        }
     }
 
     GameObject CheckForPredators()

@@ -25,6 +25,14 @@ public class QuestAIStateMachine : MonoBehaviour
         }
     }
 
+    public State PreviousState
+    {
+        get
+        {
+            return previousState;
+        }
+    }
+
     public void ReturnToPreviousState()
     {
         currentState = previousState;

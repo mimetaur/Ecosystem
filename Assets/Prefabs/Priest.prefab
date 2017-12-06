@@ -27,9 +27,8 @@ GameObject:
   - component: {fileID: 114158899465176094}
   - component: {fileID: 114105491684351506}
   - component: {fileID: 114557713128364666}
-  - component: {fileID: 114151784996682944}
-  - component: {fileID: 114828955996854960}
-  - component: {fileID: 114635001604675470}
+  - component: {fileID: 114011778187662864}
+  - component: {fileID: 114823748167080644}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Player
@@ -95,6 +94,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8707293, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114011778187662864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424382132772352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28db1ae94d3734efaa4434e6c977ab70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  predatorType: {fileID: 1498878960245882, guid: ce3afccb2a07642e2a5e21ebe5238b5d,
+    type: 2}
+  threshold: 12
 --- !u!114 &114105491684351506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,20 +144,6 @@ MonoBehaviour:
   interpolatePathSwitches: 1
   switchPathInterpolationSpeed: 5
   targetCompatibility: {fileID: 0}
---- !u!114 &114151784996682944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1424382132772352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28db1ae94d3734efaa4434e6c977ab70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  predatorType: {fileID: 1498878960245882, guid: ce3afccb2a07642e2a5e21ebe5238b5d,
-    type: 2}
-  threshold: 8
 --- !u!114 &114158899465176094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,19 +191,7 @@ MonoBehaviour:
     useGraphRaycasting: 0
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
---- !u!114 &114635001604675470
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1424382132772352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83d6dc76e109433183fc99e1e4a7e3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 1340811644762656, guid: cced83dfd49e0484bb538234d1725abd, type: 2}
---- !u!114 &114828955996854960
+--- !u!114 &114823748167080644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -215,8 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a93e45ebd10a413c9c4be43ea1ca338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rate: 0
-  fleeingMultiplier: 0
+  rate: 2
+  fleeingMultiplier: 1
 --- !u!212 &212925147809342588
 SpriteRenderer:
   m_ObjectHideFlags: 1
