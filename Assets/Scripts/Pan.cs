@@ -49,14 +49,12 @@ public class Pan : MonoBehaviour
         {
             targetPosition = targetObject.transform.position;
         }
-        else
-        {
-            targetObject = GameObject.FindGameObjectWithTag("Player");
-            targetPosition = targetObject.transform.position;
-            Invoke("SetTarget", 5.0f);
-        }
+    }
 
-
+    public void WasRespawned(GameObject newPlayer)
+    {
+        targetObject = newPlayer;
+        targetPosition = targetObject.transform.position;
     }
 
     void LateUpdate()

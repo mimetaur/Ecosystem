@@ -18,15 +18,7 @@ public class SpawnPriest : MonoBehaviour
         SpawnNewPriest();
     }
 
-    private void Update()
-    {
-        if (GameObject.FindGameObjectsWithTag("Player").Length < 1)
-        {
-            Invoke("SpawnNewPriest", 2.0f);
-        }
-    }
-
-    void SpawnNewPriest()
+    public void SpawnNewPriest()
     {
         if (GameObject.FindGameObjectsWithTag("Player").Length < 1)
         {
@@ -36,7 +28,21 @@ public class SpawnPriest : MonoBehaviour
 
     }
 
-    void SpawnPriestAt(Vector2 location)
+    public void RespawnPriest()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            SpawnNewPriest();
+        }
+        else
+        {
+            player.transform.position = bounds.GetRandomPoint();
+            player.SetActive(true);
+        }
+    }
+
+    public void SpawnPriestAt(Vector2 location)
     {
         Instantiate(priest, location, Quaternion.identity);
     }

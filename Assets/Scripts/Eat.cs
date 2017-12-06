@@ -41,8 +41,6 @@ public class Eat : MonoBehaviour
     private void EatOther(GameObject other)
     {
         if (other == null) return;
-        //string debug = string.Format("{0} ate {1} at {2}", name, other.name, other.transform.position.AsVector2());
-        //print(debug);
 
         if (eatSounds != null) eatSounds.Play();
         if (willStarve != null) willStarve.DidEat();
@@ -51,6 +49,16 @@ public class Eat : MonoBehaviour
         if (onDie != null) onDie.Die();
 
         machine.currentState = AIStateMachine.State.Wander;
-        Destroy(other.gameObject);
+
+        if (this.gameObject.tag == "Enemy" && other.tag == "Player")
+        {
+            other.SetActive(false);
+            GameManager.instance.RespawnPlayer();
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
+
     }
 }
