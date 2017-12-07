@@ -34,7 +34,6 @@ public class Quest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Current player state: " + machine.CurrentState);
 
         if (machine.CurrentState == QuestAIStateMachine.State.Evade)
         {
@@ -45,7 +44,6 @@ public class Quest : MonoBehaviour
             gemMode.SetActive(true);
             gemMode.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
-            print(homeBounds.Contains(transform.position));
             if (homeBounds.Contains(transform.position.AsVector2()))
             {
                 print("Player is back inside house");
