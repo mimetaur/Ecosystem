@@ -16,10 +16,21 @@ public class Steer : MonoBehaviour
     private float maxSpeed;
     private float maxAvoidForce;
 
+    private SpriteRenderer sr;
+    public AudioClip clip;
+    public Range volumeRange;
+
+    [System.Serializable]
+    public class Range
+    {
+        public float min = 0.25f;
+        public float max = 0.75f;
+    }
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
 
         destination = GameObject.Find("Roller Die");
         var bounds = destination.GetComponent<BoxCollider2D>().bounds;
@@ -83,6 +94,22 @@ public class Steer : MonoBehaviour
 
         rb2d.angularVelocity = maxSpeed.Map(2.5f, 5.0f, 100.0f, 150.0f);
         //transform.Rotate( new Vector3(0, 0 1.0f) );
+    }
+
+    private void OnCollisionEnter2d(Collision2D coll)
+    {
+
+    }
+
+    private void PlayThud()
+    {
+        if (!GameUtils.IsVisibleInCamera(sr.bounds, Camera.main)) return;
+
+        float vol = Random.Range(volumeRange.min, volumeRange.max);
+        vol = GameUtils.PositionInFrameToAudioVolume(transform.position, vol);
+        float pan = GameUtils.PositionInFrameToAudioPan(transform.position);
+
+        SoundManager.instance.PlaySound(clip, vol, pan);
     }
 }
 

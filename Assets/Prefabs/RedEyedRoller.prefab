@@ -130,6 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSeeAhead: 10
   destination: {fileID: 0}
+  clip: {fileID: 8300000, guid: 97954a2ef45a34a25955f687f3ae2206, type: 3}
+  volumeRange:
+    min: 0.25
+    max: 0.75
 --- !u!114 &114411366472859394
 MonoBehaviour:
   m_ObjectHideFlags: 1

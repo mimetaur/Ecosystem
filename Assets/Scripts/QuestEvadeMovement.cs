@@ -31,6 +31,7 @@ public class QuestEvadeMovement : MonoBehaviour
         exclamationMark = (GameObject)Instantiate(Resources.Load("Exclamation Mark"));
         exclamationMark.transform.parent = this.transform;
         exclamationMark.SetActive(false);
+        exclamationMark.transform.localScale = new Vector3(0.75f, 0.75f, 1.0f);
         InvokeRepeating("CheckIfEvading", 0.0f, rate);
     }
 
@@ -65,6 +66,7 @@ public class QuestEvadeMovement : MonoBehaviour
     {
         exclamationMark.SetActive(true);
         exclamationMark.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        exclamationMark.transform.localScale = new Vector3(0.75f, 0.75f, 1.0f);
     }
 
     private void DisableMark()

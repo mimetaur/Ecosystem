@@ -23,6 +23,7 @@ public class Flee : MonoBehaviour
 
         exclamationMark = (GameObject)Instantiate(Resources.Load("Exclamation Mark"));
         exclamationMark.transform.parent = this.transform;
+        exclamationMark.transform.localScale = new Vector3(0.75f, 0.75f, 1.0f);
         exclamationMark.SetActive(false);
         InvokeRepeating("CheckIfFleeing", 0.0f, rate);
     }
@@ -53,6 +54,7 @@ public class Flee : MonoBehaviour
 
         exclamationMark.SetActive(true);
         exclamationMark.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        exclamationMark.transform.localScale = new Vector3(0.75f, 0.75f, 1.0f);
 
         ai.destination = FleePredator();
         ai.SearchPath();

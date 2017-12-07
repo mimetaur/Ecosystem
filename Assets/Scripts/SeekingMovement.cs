@@ -30,11 +30,8 @@ public class SeekingMovement : MonoBehaviour
         if (machine.currentState == AIStateMachine.State.Seek)
         {
             var dest = Seek();
-            if (dest == null)
-            {
-                machine.currentState = AIStateMachine.State.Wander;
-            }
-            else if (playerSpawnBounds.Contains(dest))
+
+            if (playerSpawnBounds.Contains(dest))
             {
                 ai.destination = GetRandomPointAtRadius(radius * 2);
                 machine.currentState = AIStateMachine.State.Wander;
