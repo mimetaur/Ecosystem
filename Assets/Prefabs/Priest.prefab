@@ -31,6 +31,8 @@ GameObject:
   - component: {fileID: 114823748167080644}
   - component: {fileID: 95358001623004568}
   - component: {fileID: 114897246986204390}
+  - component: {fileID: 114308333114225878}
+  - component: {fileID: 114075361978377418}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Player
@@ -127,6 +129,18 @@ MonoBehaviour:
   predatorType: {fileID: 1498878960245882, guid: ce3afccb2a07642e2a5e21ebe5238b5d,
     type: 2}
   threshold: 8
+--- !u!114 &114075361978377418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424382132772352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83d6dc76e109433183fc99e1e4a7e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
 --- !u!114 &114105491684351506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,6 +189,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33397d0e18bc94cd4972451737db53b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114308333114225878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424382132772352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7113249a83f574e5485466ed590c92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: ad38ac632c6a543d8aad42a03e3d3cd6, type: 3}
+  - {fileID: 8300000, guid: d80f67f176f01466e8f47183dd48af57, type: 3}
+  - {fileID: 8300000, guid: d977efa8c74d54b7b9072420c53fdf78, type: 3}
+  - {fileID: 8300000, guid: 08be6788ab7b6440d8a4d3076f641acd, type: 3}
+  - {fileID: 8300000, guid: e6adef908421f4c08aa5dce77b7827f6, type: 3}
+  - {fileID: 8300000, guid: a7ab10c00dbfb403abce5a70990d38ed, type: 3}
+  volumeRange:
+    min: 0.25
+    max: 0.75
 --- !u!114 &114557713128364666
 MonoBehaviour:
   m_ObjectHideFlags: 1

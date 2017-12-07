@@ -12,12 +12,14 @@ public class SeekingMovement : MonoBehaviour
     AIStateMachine machine;
     ScanForTargets scan;
 
+    Bounds playerSpawnBounds;
+
     private void Start()
     {
         ai = GetComponent<IAstarAI>();
         machine = GetComponent<AIStateMachine>();
         scan = GetComponent<ScanForTargets>();
-
+        playerSpawnBounds = GameObject.Find("Priest Spawn").GetComponent<Collider2D>().bounds;
         ai.destination = GetRandomPoint();
     }
 
@@ -27,7 +29,22 @@ public class SeekingMovement : MonoBehaviour
 
         if (machine.currentState == AIStateMachine.State.Seek)
         {
-            ai.destination = Seek();
+            var dest = Seek();
+            if (dest == null)
+            {
+                machine.currentState = AIStateMachine.State.Wander;
+            }
+            else if (playerSpawnBounds.Contains(dest))
+            {
+                ai.destination = GetRandomPointAtRadius(radius * 2);
+                machine.currentState = AIStateMachine.State.Wander;
+                ai.SearchPath();
+            }
+            else
+            {
+                ai.destination = dest;
+            }
+
             if (!ai.pathPending && (ai.reachedEndOfPath || !ai.hasPath))
             {
                 print("End of path");
@@ -54,6 +71,13 @@ public class SeekingMovement : MonoBehaviour
     private Vector2 GetRandomPoint()
     {
         var point = Random.insideUnitCircle * radius;
+        point += transform.position.AsVector2();
+        return point;
+    }
+
+    private Vector2 GetRandomPointAtRadius(float aRadius)
+    {
+        var point = Random.insideUnitCircle * aRadius;
         point += transform.position.AsVector2();
         return point;
     }
