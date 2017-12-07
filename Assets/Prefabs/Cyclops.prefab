@@ -35,6 +35,7 @@ GameObject:
   - component: {fileID: 114270075012442866}
   - component: {fileID: 114997641195477056}
   - component: {fileID: 114641943777677988}
+  - component: {fileID: 95446855439323596}
   m_Layer: 0
   m_Name: Cyclops
   m_TagString: Creature
@@ -100,6 +101,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95446855439323596
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621018232485774}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5d31901071214816a83e7627bd0ed01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114084148287543474
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,7 +19,7 @@ public class CreatureAnim : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         ai = GetComponent<IAstarAI>();
 
-        InvokeRepeating("ChangeFacing", 0.0f, 1.01f);
+        InvokeRepeating("ChangeFacing", 0.0f, 1.5f);
     }
 
     // Update is called once per frame
