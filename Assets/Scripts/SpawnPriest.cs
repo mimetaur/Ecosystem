@@ -31,6 +31,7 @@ public class SpawnPriest : MonoBehaviour
     public void RespawnPriest()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         if (player == null)
         {
             SpawnNewPriest();

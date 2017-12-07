@@ -57,7 +57,10 @@ public class Eat : MonoBehaviour
         }
         else
         {
-            Destroy(other.gameObject);
+            if (onDie == null)
+            {
+                Destroy(other.gameObject);
+            }
         }
 
     }
