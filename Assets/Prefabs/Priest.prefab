@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   predatorType: {fileID: 1498878960245882, guid: ce3afccb2a07642e2a5e21ebe5238b5d,
     type: 2}
-  threshold: 12
+  threshold: 8
 --- !u!114 &114105491684351506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: 2
-  fleeingMultiplier: 1
+  fleeingMultiplier: 1.25
 --- !u!114 &114897246986204390
 MonoBehaviour:
   m_ObjectHideFlags: 1
