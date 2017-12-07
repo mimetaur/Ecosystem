@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(TargetTag))]
 public class Eat : MonoBehaviour
@@ -9,6 +10,7 @@ public class Eat : MonoBehaviour
     private AIStateMachine machine;
     private EatSounds eatSounds;
     private WillStarve willStarve;
+    public float dieTime = 0.5f;
 
 
     private void Start()
@@ -59,9 +61,22 @@ public class Eat : MonoBehaviour
         {
             if (onDie == null)
             {
-                Destroy(other.gameObject);
+                if (other.tag == "Mushroom" || other.tag == "Coin")
+                {
+                    other.transform.DOScale(0, dieTime).OnComplete(() => DestroyCallback(other));
+                }
+                else
+                {
+                    Destroy(other);
+                }
+
             }
         }
 
+    }
+
+    private void DestroyCallback(GameObject other)
+    {
+        Destroy(other);
     }
 }
