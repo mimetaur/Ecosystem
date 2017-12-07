@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 114897246986204390}
   - component: {fileID: 114308333114225878}
   - component: {fileID: 114075361978377418}
+  - component: {fileID: 114808093562100884}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Player
@@ -140,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83d6dc76e109433183fc99e1e4a7e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 1340811644762656, guid: cced83dfd49e0484bb538234d1725abd, type: 2}
 --- !u!114 &114105491684351506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +247,27 @@ MonoBehaviour:
     useGraphRaycasting: 0
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!114 &114808093562100884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424382132772352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dafbcfd940341f09a9e83ddfac7ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 8e14d9ce7fced471982fbb78ec082838, type: 3}
+  - {fileID: 8300000, guid: b2054fb6cb41145be83dd14d115f7f35, type: 3}
+  - {fileID: 8300000, guid: 7661e5631972c4dadaac3c8bc6354b2b, type: 3}
+  - {fileID: 8300000, guid: 306870fca45704991815bd675e292b47, type: 3}
+  - {fileID: 8300000, guid: ceaed06ce45c14d7c8ef7b22b4d67255, type: 3}
+  - {fileID: 8300000, guid: 75d32b3fd3d6844db8c2091407121d02, type: 3}
+  volumeRange:
+    min: 0.25
+    max: 0.75
 --- !u!114 &114823748167080644
 MonoBehaviour:
   m_ObjectHideFlags: 1

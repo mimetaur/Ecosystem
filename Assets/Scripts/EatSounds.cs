@@ -24,7 +24,7 @@ public class EatSounds : MonoBehaviour
 
     public void Play()
     {
-        if ( !GameUtils.IsVisibleInCamera(sr.bounds, Camera.main) ) return;
+        if (!GameUtils.IsVisibleInCamera(sr.bounds, Camera.main)) return;
 
         float vol = Random.Range(volumeRange.min, volumeRange.max);
         vol = GameUtils.PositionInFrameToAudioVolume(transform.position, vol);

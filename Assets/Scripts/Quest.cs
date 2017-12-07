@@ -18,6 +18,8 @@ public class Quest : MonoBehaviour
     private Vector2 homePosition;
     private GameObject target;
 
+    private EatSounds pickupSounds;
+
     // Use this for initialization
     void Start()
     {
@@ -29,6 +31,8 @@ public class Quest : MonoBehaviour
 
         homeBounds = GameObject.Find("Priest Spawn").GetComponent<Collider2D>().bounds;
         homePosition = homeBounds.center.AsVector2();
+
+        pickupSounds = GetComponent<EatSounds>();
     }
 
     // Update is called once per frame
@@ -74,6 +78,7 @@ public class Quest : MonoBehaviour
 
     private void WaitToSeek()
     {
+        pickupSounds.Play();
         print("Leaving the house!");
         machine.CurrentState = QuestAIStateMachine.State.Wander;
         gemMode.transform.localScale = new Vector3(0.75f, 0.75f, 1.0f);
@@ -144,6 +149,7 @@ public class Quest : MonoBehaviour
     {
         if (other != null && other.tag == "QuestGoal")
         {
+            if (pickupSounds != null) pickupSounds.Play();
             machine.CurrentState = QuestAIStateMachine.State.ReturnHomeWithGem;
             Destroy(other);
             print("Got Quest Goal");
