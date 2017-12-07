@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class PlayerAnim : MonoBehaviour
+public class CreatureAnim : MonoBehaviour
 {
 
-    QuestAIStateMachine machine;
+    AIStateMachine machine;
     Animator anim;
     SpriteRenderer sr;
 
@@ -14,23 +14,25 @@ public class PlayerAnim : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        machine = GetComponent<QuestAIStateMachine>();
+        machine = GetComponent<AIStateMachine>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         ai = GetComponent<IAstarAI>();
-        InvokeRepeating("UpdateFacing", 0.0f, 0.51f);
+
+        InvokeRepeating("ChangeFacing", 0.0f, 1.01f);
     }
 
-    void UpdateFacing()
+    // Update is called once per frame
+    void ChangeFacing()
     {
-        if (machine.CurrentState == QuestAIStateMachine.State.Idle)
+        if (machine.currentState == AIStateMachine.State.Idle)
         {
             anim.enabled = false;
         }
         else
         {
             anim.enabled = true;
-            if (transform.position.x > ai.steeringTarget.x)
+            if (transform.position.x > ai.destination.x)
             {
                 sr.flipX = true;
             }

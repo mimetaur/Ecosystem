@@ -56,7 +56,15 @@ public class Quest : MonoBehaviour
         }
         else if (machine.CurrentState == QuestAIStateMachine.State.Seek || machine.CurrentState == QuestAIStateMachine.State.Wander)
         {
-            SearchForQuestItems();
+            if (gemMode.activeInHierarchy == true)
+            {
+                machine.CurrentState = QuestAIStateMachine.State.ReturnHomeWithGem;
+            }
+            else
+            {
+                SearchForQuestItems();
+            }
+
         }
         else if (machine.CurrentState == QuestAIStateMachine.State.Idle)
         {
