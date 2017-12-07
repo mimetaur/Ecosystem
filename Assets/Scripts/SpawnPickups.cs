@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SpawnPickups : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class SpawnPickups : MonoBehaviour
     public bool spawnRepeating = true;
     public float initialDelay;
     public float rate;
+    public float spawnTime = 0.5f;
 
 
     private GameWorld world;
@@ -39,7 +41,9 @@ public class SpawnPickups : MonoBehaviour
 
     private void SpawnPickupAt(Vector2 pos)
     {
-        Instantiate(pickup, pos, Quaternion.identity);
+        GameObject newPickup = (GameObject)Instantiate(pickup, pos, Quaternion.identity) as GameObject;
+        newPickup.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+        newPickup.transform.DOScale(1.0f, spawnTime);
     }
 }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using DG.Tweening;
 
 public class SpawnCreaturesWithinBounds : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class SpawnCreaturesWithinBounds : MonoBehaviour
     public GameObject area;
     public float initialDelay;
     public float rate;
+    public float spawnTime = 0.5f;
 
     private int numCreatures = 0;
     private Bounds bounds;
@@ -25,14 +27,16 @@ public class SpawnCreaturesWithinBounds : MonoBehaviour
     {
         bounds = area.GetComponent<Collider2D>().bounds;
 
-        for (numCreatures = 0; numCreatures < initialCreatures; numCreatures++) {
+        for (numCreatures = 0; numCreatures < initialCreatures; numCreatures++)
+        {
             SpawnNewCreature();
         }
 
         InvokeRepeating("SpawnNewCreature", initialDelay, rate);
     }
 
-    void SpawnNewCreature() {
+    void SpawnNewCreature()
+    {
         if (numCreatures > maxCreatures) return;
 
         Vector2 spawnPoint = bounds.GetRandomPoint();
@@ -48,5 +52,8 @@ public class SpawnCreaturesWithinBounds : MonoBehaviour
 
         var ai = newCreature.GetComponent<IAstarAI>();
         ai.maxSpeed = Random.Range(1.0f, 3.0f);
+
+        newCreature.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+        newCreature.transform.DOScale(1.0f, spawnTime);
     }
 }
