@@ -29,6 +29,8 @@ GameObject:
   - component: {fileID: 114557713128364666}
   - component: {fileID: 114011778187662864}
   - component: {fileID: 114823748167080644}
+  - component: {fileID: 95358001623004568}
+  - component: {fileID: 114897246986204390}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Player
@@ -94,6 +96,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8707293, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95358001623004568
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424382132772352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64599ca6fee6f49209f1f3b55bcd8d70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114011778187662864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +224,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rate: 2
   fleeingMultiplier: 1
+--- !u!114 &114897246986204390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424382132772352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13edc088c56054434844d68bc5013eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212925147809342588
 SpriteRenderer:
   m_ObjectHideFlags: 1

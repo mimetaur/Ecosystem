@@ -13,11 +13,14 @@ public class QuestEvadeManager : MonoBehaviour
 
     private QuestAIStateMachine machine;
 
+    private Quest quest;
+
     // Use this for initialization
     void Start()
     {
         machine = GetComponent<QuestAIStateMachine>();
         evasion = GetComponent<QuestEvadeMovement>();
+        quest = GetComponent<Quest>();
     }
 
     // Update is called once per frame
@@ -25,11 +28,27 @@ public class QuestEvadeManager : MonoBehaviour
     {
         predator = CheckForPredators();
 
-        if (predator != null)
+        if (predator != null && machine.CurrentState != QuestAIStateMachine.State.Evade)
         {
-            // flee only if creature is within threshold
-            machine.CurrentState = QuestAIStateMachine.State.Evade;
-            evasion.SetPredator(predator);
+            bool isClose = Vector2.Distance(predator.transform.position, transform.position) < threshold;
+            if (isClose)
+            {
+                // flee only if creature is within threshold
+                machine.CurrentState = QuestAIStateMachine.State.Evade;
+                evasion.SetPredator(predator);
+            }
+            else
+            {
+                machine.CurrentState = QuestAIStateMachine.State.Wander;
+                predator = null;
+                evasion.SetPredator(null);
+            }
+
+        }
+        else if (predator == null && machine.CurrentState == QuestAIStateMachine.State.Evade)
+        {
+            evasion.SetPredator(null);
+            machine.CurrentState = QuestAIStateMachine.State.Wander;
         }
     }
 

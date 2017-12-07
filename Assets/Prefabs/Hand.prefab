@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b421fe2b9e204c1f8859bc14c887771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGoWithoutFoodForSecs: 120
+  canGoWithoutFoodForSecs: 60
 --- !u!114 &114266005937782104
 MonoBehaviour:
   m_ObjectHideFlags: 1
