@@ -16,6 +16,13 @@ public class OnDie : MonoBehaviour
     private void LeaveSkull()
     {
         Instantiate(icon, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        if (this.gameObject.tag != "Player")
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            GameManager.instance.RespawnPlayer();
+        }
     }
 }

@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91ddbb63d8f8427ba20d51bcbef9dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieTime: 0.5
 --- !u!114 &114316228420709124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1340811644762656, guid: cced83dfd49e0484bb538234d1725abd, type: 2}
+  dieTime: 0.5
 --- !u!114 &114404574570840844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,7 +267,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1498878960245882}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1574adada71b44fc1b38de724b2327b5, type: 3}
   m_Name: 

@@ -52,27 +52,17 @@ public class Eat : MonoBehaviour
 
         machine.currentState = AIStateMachine.State.Wander;
 
-        if (this.gameObject.tag == "Enemy" && other.tag == "Player")
+        if (onDie == null)
         {
-            other.SetActive(false);
-            GameManager.instance.RespawnPlayer();
-        }
-        else
-        {
-            if (onDie == null)
+            if (other.tag == "Mushroom" || other.tag == "Coin")
             {
-                if (other.tag == "Mushroom" || other.tag == "Coin")
-                {
-                    other.transform.DOScale(0, dieTime).OnComplete(() => DestroyCallback(other));
-                }
-                else
-                {
-                    Destroy(other);
-                }
-
+                other.transform.DOScale(0, dieTime).OnComplete(() => DestroyCallback(other));
+            }
+            else if (other.tag != "Player")
+            {
+                Destroy(other);
             }
         }
-
     }
 
     private void DestroyCallback(GameObject other)
