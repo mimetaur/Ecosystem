@@ -204,12 +204,12 @@ Prefab:
     - target: {fileID: 114340725339108030, guid: e6215e4291c5d4d6ba875f2f06d4228c,
         type: 2}
       propertyPath: initialCreatures
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114340725339108030, guid: e6215e4291c5d4d6ba875f2f06d4228c,
         type: 2}
       propertyPath: maxCreatures
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114527669936307742, guid: e6215e4291c5d4d6ba875f2f06d4228c,
         type: 2}
@@ -53557,7 +53557,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.4375
+  orthographic size: Infinity
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -60381,7 +60381,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.2080839, y: 0.7582232}
+  m_Offset: {x: -0.44707784, y: 0.7582232}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -60392,7 +60392,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1804266, y: 3.1420672}
+  m_Size: {x: 1.2453469, y: 3.1420672}
   m_EdgeRadius: 0
 --- !u!1 &1999095752
 GameObject:
