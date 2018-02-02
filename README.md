@@ -1,5 +1,7 @@
 # Ecosystem
 
+![Ecosystem Example](http://nathankoch.com/img/work/ecosystem-01.png)
+
 Stories and imaginary worlds, as we traditionally imagine them, are hand-crafted, populated painstakingly by authors or designers. What happens if, instead, we observe narrative agents in a persistent virtual space? Can happy accidents arrive through emergent systems?
 
 My intent with Ecosystem was to explore and study these techniques and associated algorithms in order to create and populate a "generative world." My goal was that I could combineprocedural content, algorithmically simulated behavior, and programmatic world-building can create something that is both like and entirely unlike a game; although it is built on game technologies and has the look and feel of a game, it isn't playable. There's a sense of place and users may infer their own story, but it resists conventional narrative readings.
